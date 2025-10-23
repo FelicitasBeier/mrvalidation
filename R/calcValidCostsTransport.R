@@ -95,12 +95,12 @@ calcValidCostsTransport <- function(datasource = "GTAPtransport") {
 
   } else if (datasource == "MAgPIEcalc") {
 
-    distance <- calcOutput("TransportTime", cells = "lpjcell", aggregate = FALSE)
-    productionKcr <- calcOutput("Production", cellular = TRUE, cells = "lpjcell",
+    distance <- calcOutput("TransportTime", aggregate = FALSE)
+    productionKcr <- calcOutput("Production", cellular = TRUE,
                                 products = "kcr", attributes = "dm", aggregate = FALSE)
-    productionKli <- calcOutput("Production", cellular = TRUE, cells = "lpjcell",
+    productionKli <- calcOutput("Production", cellular = TRUE,
                                 products = "kli", attributes = "dm", aggregate = FALSE)
-    productionPasture <- calcOutput("Production", cellular = TRUE, cells = "lpjcell",
+    productionPasture <- calcOutput("Production", cellular = TRUE,
                                     products = "pasture", attributes = "dm", aggregate = FALSE)
     productionPasture <- add_dimension(productionPasture, add = "pasture",
                                        nm = "pasture", dim = 3.1)
