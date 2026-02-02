@@ -1,8 +1,8 @@
 Type: Package
 Package: mrvalidation
 Title: madrat data preparation for validation purposes
-Version: 2.63.0.2
-Date: 2025-09-09
+Version: 2.65.3
+Date: 2026-01-14
 Authors@R: c(
     person("Benjamin Leon", "Bodirsky", , "bodirsky@pik-potsdam.de", role = c("aut", "cre")),
     person("Stephen", "Wirth", role = "aut"),
@@ -61,4 +61,4 @@ Suggests:
     covr
 Encoding: UTF-8
 LazyData: no
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3

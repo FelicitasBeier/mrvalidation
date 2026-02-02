@@ -4,18 +4,26 @@
 \alias{calcValidFoodExpenditure}
 \title{calcValidFoodExpenditure}
 \usage{
-calcValidFoodExpenditure(detail = FALSE, datasource = "FAO")
+calcValidFoodExpenditure(
+  detail = FALSE,
+  datasource = "FAO",
+  expenditureType = "agPrimary"
+)
 }
 \arguments{
 \item{detail}{if FALSE, only major food commoditiy groups are shown.}
 
 \item{datasource}{Datasource for demand (FAO, FAOpre2010, FAOpost2010)}
+
+\item{expenditureType}{Either "agPrimary" for agricultural primary products (demand * prices),
+or "food" for total food expenditure including value-added marketing margins based on
+Chen et al. 2025 regression coefficients}
 }
 \value{
 List of magpie object with results on country level, weight on country level, unit and description.
 }
 \description{
-validation for foode expenditure
+validation for food expenditure
 }
 \examples{
 \dontrun{
@@ -23,5 +31,5 @@ calcOutput("ValidFoodExpenditure")
 }
 }
 \author{
-Benjamin Leon Bodirsky
+Benjamin Leon Bodirsky, David M Chen
 }

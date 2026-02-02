@@ -9,7 +9,7 @@ calcValidTrade(
   detail = TRUE,
   nutrient = "dm",
   net_trade = TRUE,
-  equalized = TRUE
+  equalized = FALSE
 )
 }
 \arguments{

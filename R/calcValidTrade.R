@@ -22,23 +22,20 @@
 
 calcValidTrade <- function(datasource = "FAO", detail = TRUE, nutrient = "dm",
                            net_trade = TRUE, # nolint: object_name_linter.
-                           equalized = TRUE) {
+                           equalized = FALSE) {
 
   if (datasource %in% c("FAO", "FAOpre2010", "FAOpost2010")) {
 
     if (datasource == "FAO") {
       mb <- collapseNames(calcOutput("FAOmassbalance", aggregate = FALSE)[, , nutrient])
-      out <- reporthelper(x = mb, dim = 3.1, level_zero_name = "Production", detail = detail)
     } else if (datasource == "FAOpre2010") {
       mb <- collapseNames(calcOutput("FAOmassbalance",
                                      version = "pre2010",
                                      aggregate = FALSE)[, , nutrient])
-      out <- reporthelper(x = mb, dim = 3.1, level_zero_name = "Production", detail = detail)
     } else if (datasource == "FAOpost2010") {
       mb <- collapseNames(calcOutput("FAOmassbalance",
                                      version = "post2010",
                                      aggregate = FALSE)[, , nutrient])
-      out <- reporthelper(x = mb, dim = 3.1, level_zero_name = "Production", detail = detail)
     } else {
       stop("No data exist for the given datasource!")
     }
@@ -109,15 +106,6 @@ calcValidTrade <- function(datasource = "FAO", detail = TRUE, nutrient = "dm",
     trade <- mbind(tkcr, tkli, to)
     rm(tkcr, tkli, to)
 
-    # set within region trade to 0
-    # NOTE THIS IS ASSUMING H12 regions!!!!
-    h12 <- toolGetMapping("regionmappingH12.csv", type = "regional", where = "madrat")
-
-    for (i in unique(h12$RegionCode)) {
-      trade[list("im" = h12[(h12$RegionCode == i), "CountryCode"],
-                 "ex" = h12[(h12$RegionCode == i), "CountryCode"]), , ] <- 0
-    }
-
     imports <- dimSums(trade, dim = 1.2)
     exports <- dimSums(trade, dim = 1.1)
 
@@ -126,7 +114,8 @@ calcValidTrade <- function(datasource = "FAO", detail = TRUE, nutrient = "dm",
       out <- reporthelper(x = net, dim = 3.1, level_zero_name = "Trade|Net-Trade",
                           detail = detail, partly = TRUE)
     } else {
-      out1 <- reporthelper(exports, dim = 3.1, level_zero_name = "Trade|Exports", detail = detail, partly = TRUE)
+      out1 <- reporthelper(exports, dim = 3.1, level_zero_name = "Trade|Exports excl export balanceflow",
+                           detail = detail, partly = TRUE)
       out2 <- reporthelper(imports, dim = 3.1, level_zero_name = "Trade|Imports", detail = detail, partly = TRUE)
       out <- mbind(out1, out2)
     }

@@ -4,10 +4,13 @@
 \alias{calcValidFoodExpenditureShare}
 \title{calcValidFoodExpenditureShare}
 \usage{
-calcValidFoodExpenditureShare(detail = FALSE)
+calcValidFoodExpenditureShare(detail = FALSE, expenditureType = "agPrimary")
 }
 \arguments{
 \item{detail}{if FALSE, only major food commoditiy groups are shown.}
+
+\item{expenditureType}{Either "agPrimary" for agricultural primary products share,
+or "food" for total food expenditure share including value-added marketing margins}
 }
 \value{
 List of magpie object with results on country level, weight on country level, unit and description.
@@ -22,5 +25,5 @@ calcOutput("ValidFoodExpenditureShare")
 
 }
 \author{
-Benjamin Leon Bodirsky
+Benjamin Leon Bodirsky, David M Chen
 }

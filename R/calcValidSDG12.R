@@ -35,8 +35,8 @@ calcValidSDG12 <- function(datasource = "FAO") {
     # reading only domestic supply
     out <- collapseNames(aAgg[, , "domestic_supply"])
     out <- dimSums(out, na.rm = TRUE, dim = 3)
-    popul <- readSource("FAO", subtype = "Pop")
-    popul <- popul[, , "population"] + 10^-10
+    popul <- readSource("FAO_online", subtype = "Pop")
+    popul <- popul[, , "Total_Population_Both_sexes_(persons)"] + 10^-10
     comYears <- intersect(getYears(out), getYears(popul))
     popul <- popul[, comYears, ]
     out <- out / setNames(popul, NULL)
