@@ -342,6 +342,9 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
              warnNA = FALSE, try = TRUE) # ready
   calcOutput(type = "ValidPriceGHG",   datasource = "SSPResults", aggregate = aggregate,
              file = valfile, append = TRUE, warnNA = FALSE, try = TRUE)
+  calcOutput(type = "ValidPriceLand",   datasource = "FAO_USDA", aggregate = aggregate,
+             file = valfile, append = TRUE, warnNA = FALSE, try = TRUE)
+
 
   # PriceIndex
   calcOutput(type = "ValidPriceIndex", datasource = "FAO", baseyear = "y2010", round = TRUE,
