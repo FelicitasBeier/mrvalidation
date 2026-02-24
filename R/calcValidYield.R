@@ -7,7 +7,8 @@
 #' Returns yield as calculated from area area and production.
 #'
 #' @param datasource Specify which datasource needs to be used.
-#'                   Currently only "FAO" and "calibratedLPJmL" is available.
+#'                   Currently only "FAO", "Ostberg2023_FAO_LUH2v2" and
+#'                   "calibratedLPJmL" is available.
 #' @param future     if NULL no future values are returned (default).
 #'                   specify climate scenario (gcm:rcp), if future is needed
 #' @param physical if true (default) physical area (croparea) used for yield calculation;
