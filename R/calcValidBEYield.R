@@ -24,7 +24,7 @@ calcValidBEYield <- function() {
 
   # Aggregate each crop independently to country level weighted by 1995 cropland area
   weight  <- calcOutput("Croparea", sectoral = "kcr", physical = TRUE,
-                        cellular = TRUE, cells = "lpjcell", aggregate = FALSE)
+                        cellular = TRUE, aggregate = FALSE)
   weight  <- setYears(dimSums(weight[, "y1995", ], dim = 3), "y1995")
   weight  <- time_interpolate(weight, years, extrapolation_type = "constant",
                               integrate_interpolated_years = TRUE)
