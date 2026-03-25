@@ -25,7 +25,7 @@ calcValidBEYield <- function() {
   # Cropland area (summed over all crops, 1995 base year) used as aggregation weight.
   weight <- calcOutput("Croparea", sectoral = "kcr", physical = TRUE,
                        cellular = TRUE, aggregate = FALSE)
-  weight <- setYears(dimSums(weight[, "y1995", ], dim = 3), "y2010")
+  weight <- setYears(dimSums(weight[, "y1995", ], dim = 3), NULL)
 
   out <- NULL
   for (crop in names(crops)) {

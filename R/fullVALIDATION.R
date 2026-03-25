@@ -317,6 +317,9 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
     }
   }
 
+  calcOutput(type = "ValidBEYiel", aggregate = aggregate, file = valfile,
+                   append = TRUE, try = TRUE)
+
   # Productivity
   calcOutput(type = "ValidTau", aggregate = aggregate, file = valfile, append = TRUE, try = TRUE)
   calcOutput(type = "ValidTauPastr", aggregate = aggregate, file = valfile, append = TRUE, try = TRUE)
