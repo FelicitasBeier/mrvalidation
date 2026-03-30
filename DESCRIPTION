@@ -1,8 +1,8 @@
 Type: Package
 Package: mrvalidation
 Title: madrat data preparation for validation purposes
-Version: 2.66.8
-Date: 2026-03-15
+Version: 2.67.0
+Date: 2026-03-30
 Authors@R: c(
     person("Benjamin Leon", "Bodirsky", , "bodirsky@pik-potsdam.de", role = c("aut", "cre")),
     person("Stephen", "Wirth", role = "aut"),
@@ -62,3 +62,4 @@ Suggests:
 Encoding: UTF-8
 LazyData: no
 RoxygenNote: 7.3.3
+Config/Needs/website: tidyverse/tidytemplate
