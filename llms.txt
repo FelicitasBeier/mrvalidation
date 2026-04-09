@@ -1,0 +1,280 @@
+# madrat data preparation for validation purposes
+
+R package **mrvalidation**, version **2.67.0**
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/mrvalidation)](https://cran.r-project.org/package=mrvalidation)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4317826.svg)](https://doi.org/10.5281/zenodo.4317826)
+[![R build
+status](https://github.com/pik-piam/mrvalidation/workflows/check/badge.svg)](https://github.com/pik-piam/mrvalidation/actions)
+[![codecov](https://codecov.io/gh/pik-piam/mrvalidation/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pik-piam/mrvalidation)
+[![r-universe](https://pik-piam.r-universe.dev/badges/mrvalidation)](https://pik-piam.r-universe.dev/builds)
+
+## Purpose and Functionality
+
+Package contains routines to prepare data for validation exercises.
+
+## Installation
+
+For installation of the most recent package version an additional
+repository has to be added in R:
+
+``` r
+options(repos = c(CRAN = "@CRAN@", pik = "https://rse.pik-potsdam.de/r/packages"))
+```
+
+The additional repository can be made available permanently by adding
+the line above to a file called `.Rprofile` stored in the home folder of
+your system (`Sys.glob("~")` in R returns the home directory).
+
+After that the most recent version of the package can be installed using
+`install.packages`:
+
+``` r
+install.packages("mrvalidation")
+```
+
+Package updates can be installed using `update.packages` (make sure that
+the additional repository has been added before running that command):
+
+``` r
+update.packages()
+```
+
+## Questions / Problems
+
+In case of questions / problems please contact Benjamin Leon Bodirsky
+<bodirsky@pik-potsdam.de>.
+
+## Citation
+
+To cite package **mrvalidation** in publications use:
+
+Bodirsky B, Wirth S, Karstens K, Humpenoeder F, Stevanovic M, Mishra A,
+Biewald A, Weindl I, Beier F, Chen D, Crawford M, Leip D, Molina Bacca
+E, Kreidenweis U, W. Yalew A, von Jeetze P, Wang X, Dietrich J, Alves M
+(2026). “mrvalidation: madrat data preparation for validation purposes.”
+<doi:10.5281/zenodo.4317826> <https://doi.org/10.5281/zenodo.4317826>,
+Version: 2.67.0, <https://github.com/pik-piam/mrvalidation>.
+
+A BibTeX entry for LaTeX users is
+
+``` latex
+@Misc{,
+ title = {mrvalidation: madrat data preparation for validation purposes},
+ author = {Benjamin Leon Bodirsky and Stephen Wirth and Kristine Karstens and Florian Humpenoeder and Mishko Stevanovic and Abhijeet Mishra and Anne Biewald and Isabelle Weindl and Felicitas Beier and David Chen and Michael Crawford and Debbora Leip and Edna {Molina Bacca} and Ulrich Kreidenweis and Amsalu {W. Yalew} and Patrick {von Jeetze} and Xiaoxi Wang and Jan Philipp Dietrich and Marcos Alves},
+ doi = {10.5281/zenodo.4317826},
+ date = {2026-03-30},
+ year = {2026},
+ url = {https://github.com/pik-piam/mrvalidation},
+ note = {Version: 2.67.0},
+}
+```
+
+# Package index
+
+## All functions
+
+- [`calcGMIA()`](calcGMIA.md) : calcGMIA
+- [`calcNitrogenSurplusByCrop()`](calcNitrogenSurplusByCrop.md) :
+  calcNitrogenSurplusByCrop
+- [`calcValidAAI()`](calcValidAAI.md) : calcValidAAI
+- [`calcValidAEI()`](calcValidAEI.md) : calcValidAEI
+- [`calcValidAgEmployment()`](calcValidAgEmployment.md) :
+  calcValidAgEmployment
+- [`calcValidAgFFGDP()`](calcValidAgFFGDP.md) : calcValidAgFFGDP
+- [`calcValidAgGDP()`](calcValidAgGDP.md) : calcValidAgGDP
+- [`calcValidAgriResearchIntensity()`](calcValidAgriResearchIntensity.md)
+  : calcValidAgriResearchIntensity
+- [`calcValidAnnualCarbonLTS()`](calcValidAnnualCarbonLTS.md) :
+  calcValidAnnualCarbonLTS
+- [`calcValidBII()`](calcValidBII.md) : calcValidBII
+- [`calcValidCMIP6()`](calcValidCMIP6.md) : calcValidCMIP6
+- [`calcValidCarbon()`](calcValidCarbon.md) : calcValidCarbon
+- [`calcValidConsumptionValue()`](calcValidConsumptionValue.md) :
+  calcValidConsumptionValue
+- [`calcValidCostsAEI()`](calcValidCostsAEI.md) : calcValidCostsAEI
+- [`calcValidCostsCapStocks()`](calcValidCostsCapStocks.md) :
+  calcValidCostsCapStocks
+- [`calcValidCostsFertilizer()`](calcValidCostsFertilizer.md) :
+  calcValidCostsFertilizer
+- [`calcValidCostsLabor()`](calcValidCostsLabor.md) :
+  calcValidCostsLabor
+- [`calcValidCostsOverall()`](calcValidCostsOverall.md) :
+  calcValidCostsOverall
+- [`calcValidCostsTC()`](calcValidCostsTC.md) : calcValidCostsTC
+- [`calcValidCostsTransport()`](calcValidCostsTransport.md) :
+  calcValidCostsTransport
+- [`calcValidCroparea()`](calcValidCroparea.md) : calcValidCroparea
+- [`calcValidCropareaDiversity()`](calcValidCropareaDiversity.md) :
+  calcValidCropareaDiversity
+- [`calcValidCumulativeCarbonLTS()`](calcValidCumulativeCarbonLTS.md) :
+  calcValidCumulativeCarbonLTS
+- [`calcValidDemand()`](calcValidDemand.md) : calcValidDemand
+- [`calcValidDemandBioenergy()`](calcValidDemandBioenergy.md) :
+  calcValidDemandBioenergy
+- [`calcValidEmisLucGasser()`](calcValidEmisLucGasser.md) :
+  calcValidEmisLucGasser
+- [`calcValidEmisLucGlo()`](calcValidEmisLucGlo.md) :
+  calcValidEmisLucGlo
+- [`calcValidEmisLucGloGasser()`](calcValidEmisLucGloGasser.md) :
+  calcValidEmisLucGloGasser
+- [`calcValidEmissions()`](calcValidEmissions.md) : calcValidEmissions
+- [`calcValidEmissionsAFOLU()`](calcValidEmissionsAFOLU.md) :
+  ValidEmissionsAFOLU
+- [`calcValidEmissionsPeatland()`](calcValidEmissionsPeatland.md) :
+  calcValidEmissionsPeatland
+- [`calcValidFactorReqShares()`](calcValidFactorReqShares.md) :
+  calcValidFactorReqShares
+- [`calcValidFeed()`](calcValidFeed.md) : calcValidFeed
+- [`calcValidFeedConversion()`](calcValidFeedConversion.md) :
+  calcValidFeedConversion
+- [`calcValidFoodExpenditure()`](calcValidFoodExpenditure.md) :
+  calcValidFoodExpenditure
+- [`calcValidFoodExpenditureShare()`](calcValidFoodExpenditureShare.md)
+  : calcValidFoodExpenditureShare
+- [`calcValidGS()`](calcValidGS.md) : calcValidGS
+- [`calcValidGini()`](calcValidGini.md) : calcValidGini
+- [`calcValidGlobalCarbonBudget()`](calcValidGlobalCarbonBudget.md) :
+  ValidGlobalCarbonBudget
+- [`calcValidGlobalSurfaceTemp()`](calcValidGlobalSurfaceTemp.md) :
+  calcValidGlobalSurfaceTemp
+- [`calcValidGrassLSUha()`](calcValidGrassLSUha.md) :
+  calcValidGrassLSUha
+- [`calcValidGridCroparea()`](calcValidGridCroparea.md) :
+  calcValidGridCroparea
+- [`calcValidGridCroplandNitrogenInputs()`](calcValidGridCroplandNitrogenInputs.md)
+  : calcValidGridCroplandNitrogenInputs
+- [`calcValidGridCroplandNitrogenSurplus()`](calcValidGridCroplandNitrogenSurplus.md)
+  : calcValidGrid
+- [`calcValidGridCroplandNitrogenWithdrawals()`](calcValidGridCroplandNitrogenWithdrawals.md)
+  : calcValidGridCroplandNitrogenWithdrawals
+- [`calcValidGridLand()`](calcValidGridLand.md) : calcValidGridLand
+- [`calcValidGridNitrogenBudgetCropland()`](calcValidGridNitrogenBudgetCropland.md)
+  : calcValidGridNitrogenBudgetCropland
+- [`calcValidGridNitrogenBudgetNonagland()`](calcValidGridNitrogenBudgetNonagland.md)
+  : calcValidGridNitrogenBudgetNonagland
+- [`calcValidGridNitrogenBudgetPasture()`](calcValidGridNitrogenBudgetPasture.md)
+  : calcValidGridNitrogenBudgetPasture
+- [`calcValidGridNutrientAWMS()`](calcValidGridNutrientAWMS.md) :
+  calcValidGridNutrientAWMS
+- [`calcValidGridNutrientLossesAWMS()`](calcValidGridNutrientLossesAWMS.md)
+  : calcValidGridNutrientLossesAWMS
+- [`calcValidGridResidueDemand()`](calcValidGridResidueDemand.md) :
+  calcValidGridResidueDemand
+- [`calcValidGridSOCStocks()`](calcValidGridSOCStocks.md) :
+  calcValidGridSOCStocks
+- [`calcValidGridYields()`](calcValidGridYields.md) :
+  calcValidGridYields
+- [`calcValidGrowingStock()`](calcValidGrowingStock.md) :
+  calcValidGrowingStock
+- [`calcValidHourlyLaborCosts()`](calcValidHourlyLaborCosts.md) :
+  calcValidHourlyLaborCosts
+- [`calcValidIncome()`](calcValidIncome.md) : calcValidIncome
+- [`calcValidKcal()`](calcValidKcal.md) : calcValidKcal
+- [`calcValidLSUdensity()`](calcValidLSUdensity.md) :
+  calcValidLSUdensity
+- [`calcValidLand()`](calcValidLand.md) : calcValidLand
+- [`calcValidLandChange()`](calcValidLandChange.md) :
+  calcValidLandChange
+- [`calcValidLivestockDemStructure()`](calcValidLivestockDemStructure.md)
+  : calcValidLivestockDemStructure
+- [`calcValidLivestockShare()`](calcValidLivestockShare.md) :
+  calcValidLivestockShare
+- [`calcValidManure()`](calcValidManure.md) : calcValidManure
+- [`calcValidNitrogenBudgetCropland()`](calcValidNitrogenBudgetCropland.md)
+  : calcValidNitrogenBudgetCropland
+- [`calcValidNitrogenBudgetNonagland()`](calcValidNitrogenBudgetNonagland.md)
+  : calcValidNitrogenBudgetNonagland
+- [`calcValidNitrogenBudgetPasture()`](calcValidNitrogenBudgetPasture.md)
+  : calcValidNitrogenBudgetPasture
+- [`calcValidNitrogenSurplus()`](calcValidNitrogenSurplus.md) :
+  calcValidNitrogenSurplus
+- [`calcValidPopulation()`](calcValidPopulation.md) :
+  calcValidPopulation
+- [`calcValidPovertyLine()`](calcValidPovertyLine.md) :
+  calcValidPovertyLine
+- [`calcValidPriceAgriculture()`](calcValidPriceAgriculture.md) :
+  calcValidPriceAgriculture
+- [`calcValidPriceBioenergy()`](calcValidPriceBioenergy.md) :
+  calcValidPriceBioenergy
+- [`calcValidPriceGHG()`](calcValidPriceGHG.md) : calcValidPriceGHG
+- [`calcValidPriceIndex()`](calcValidPriceIndex.md) :
+  calcValidPriceIndex
+- [`calcValidPriceLand()`](calcValidPriceLand.md) : calcValidPriceLand
+- [`calcValidProcessing()`](calcValidProcessing.md) :
+  calcValidProcessing
+- [`calcValidProduction()`](calcValidProduction.md) :
+  calcValidProduction
+- [`calcValidResidues()`](calcValidResidues.md) : calcValidResidues
+- [`calcValidRotationLength()`](calcValidRotationLength.md) :
+  calcValidRotationLength
+- [`calcValidSDG1()`](calcValidSDG1.md) : calcValidSDG1
+- [`calcValidSDG12()`](calcValidSDG12.md) : calcValidSDG12
+- [`calcValidSOCDensity()`](calcValidSOCDensity.md) :
+  calcValidSOCDensity
+- [`calcValidSOCShare()`](calcValidSOCShare.md) : calcValidSOCShare
+- [`calcValidSOCStocks()`](calcValidSOCStocks.md) : calcValidSOCStocks
+- [`calcValidSSPResults()`](calcValidSSPResults.md) :
+  calcValidSSPResults
+- [`calcValidSelfsuff()`](calcValidSelfsuff.md) : calcValidSelfsuff
+- [`calcValidTau()`](calcValidTau.md) : calcValidTau
+- [`calcValidTauPastr()`](calcValidTauPastr.md) : ValidTauPastr
+- [`calcValidTimber()`](calcValidTimber.md) : calcValidTimber
+- [`calcValidTotalLaborCosts()`](calcValidTotalLaborCosts.md) :
+  calcValidTotalLaborCosts
+- [`calcValidTrade()`](calcValidTrade.md) : calcValidTrade
+- [`calcValidVegfruitShare()`](calcValidVegfruitShare.md) :
+  calcValidVegfruitShare
+- [`calcValidWageDevelopment()`](calcValidWageDevelopment.md) :
+  calcValidWageDevelopment
+- [`calcValidWaterUsage()`](calcValidWaterUsage.md) :
+  calcValidWaterUsage
+- [`calcValidYield()`](calcValidYield.md) : calcValidYield
+- [`convertGMIA()`](convertGMIA.md) : convertGMIA
+- [`convertGasser()`](convertGasser.md) : convertGasser
+- [`convertHID()`](convertHID.md) : convertHID
+- [`convertIMPACTIrrigInvCosts()`](convertIMPACTIrrigInvCosts.md) :
+  convertIMPACTIrrigInvCosts
+- [`convertPardeyAgRD()`](convertPardeyAgRD.md) : convertPardeyAgRD
+- [`convertWaterUsage()`](convertWaterUsage.md) : convertWaterUsage
+- [`correctGMIA()`](correctGMIA.md) : correctGMIA
+- [`correctHID()`](correctHID.md) : correctHID
+- [`correctSoilCarbonDebt()`](correctSoilCarbonDebt.md) :
+  correctSoilCarbonDebt
+- [`downloadAR6SPMFig1()`](downloadAR6SPMFig1.md) : downloadAR6SPMFig1
+- [`downloadBII()`](downloadBII.md) : downloadBII
+- [`downloadCMIP6()`](downloadCMIP6.md) : downloadCMIP6
+- [`downloadGlobalCarbonBudget()`](downloadGlobalCarbonBudget.md) :
+  downloadGlobalCarbonBudget
+- [`downloadSoilCarbonDebt()`](downloadSoilCarbonDebt.md) :
+  downloadSanderman
+- [`fullENGAGE()`](fullENGAGE.md) : fullENGAGE
+- [`fullMADRATTOLPJML()`](fullMADRATTOLPJML.md) : fullMADRATTOLPJML
+- [`fullVALIDATION()`](fullVALIDATION.md) : fullValidation
+- [`mrvalidation`](mrvalidation-package.md)
+  [`mrvalidation-package`](mrvalidation-package.md) : mrvalidation:
+  madrat data preparation for validation purposes
+- [`readAR6SPMFig1()`](readAR6SPMFig1.md) : readAR6SPMFig1
+- [`readBII()`](readBII.md) : readBII
+- [`readCMIP6()`](readCMIP6.md) : readCMIP6
+- [`readChenFoodPrices2025()`](readChenFoodPrices2025.md) :
+  readChenFoodPrices2025
+- [`readEmisLucGlo()`](readEmisLucGlo.md) : EmisLucGlo
+- [`readFAOrotation()`](readFAOrotation.md) : FAOrotation
+- [`readGMIA()`](readGMIA.md) : readGMIA
+- [`readGSOC()`](readGSOC.md) : readGSOC
+- [`readGasser()`](readGasser.md) : Gasser
+- [`readGlobalCarbonBudget()`](readGlobalCarbonBudget.md) :
+  readGlobalCarbonBudget
+- [`readHID()`](readHID.md) : readHID
+- [`readIMPACTIrrigInvCosts()`](readIMPACTIrrigInvCosts.md) :
+  readIMPACTIrrigInvCosts
+- [`readPardeyAgRD()`](readPardeyAgRD.md) : readPardeyAgRD
+- [`readProdPrIndex()`](readProdPrIndex.md) : Read FAO producer price
+  index
+- [`readSoilCarbonDebt()`](readSoilCarbonDebt.md) : readSoilCarbonDebt
+- [`readWBPoverty()`](readWBPoverty.md) : readWBPoverty
+- [`readWISE()`](readWISE.md) : readWISE
+- [`readWaterUsage()`](readWaterUsage.md) : readWaterUsage
+
