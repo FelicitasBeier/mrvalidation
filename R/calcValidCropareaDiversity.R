@@ -19,7 +19,7 @@ calcValidCropareaDiversity <- function(index = "shannon", groupdiv = "agg1") {
   area <- readSource("LandInG", subtype = "harvestedArea")
   area <- area[, , c("pasture"), invert = TRUE]
   area <- collapseNames(area[, , "irrigated"]) + collapseNames(area[, , "rainfed"])
-  fallow <- calcOutput("FallowLand", aggregate = FALSE, cellular = TRUE)
+  fallow <- calcOutput("Fallow", aggregate = FALSE, cellular = TRUE)
   fallow <- setNames(fallow, "fallow")
   area <- mbind(area, fallow)
 

@@ -31,7 +31,7 @@ calcValidCroparea <- function(datasource = "FAO", detail = FALSE) {
                              level_zero_name = "Resources|Land Cover|Cropland|Croparea",
                              detail = detail)
     croparea <- summationhelper(croparea, sep = "+")
-    fallow <- setNames(calcOutput("FallowLand",
+    fallow <- setNames(calcOutput("Fallow",
                                   aggregate = FALSE,
                                   cellular = FALSE),
                        paste("Resources|Land Cover|Cropland|+|", reportingnames("crop_fallow"), sep = ""))
