@@ -17,18 +17,16 @@
 
 calcValidSelfsuff <- function(datasource = "FAO", detail = TRUE) {
 
-  kTrade <- findset("k_trade")
-
   if (datasource == "FAO") {
-    mb <- collapseNames(calcOutput("FAOmassbalance", aggregate = FALSE)[, , kTrade][, , "dm"])
+    mb <- collapseNames(calcOutput("FAOmassbalance", aggregate = FALSE)[, , "dm"])
   } else if (datasource == "FAOpre2010") {
     mb <- collapseNames(calcOutput("FAOmassbalance",
                                    version = "pre2010",
-                                   aggregate = FALSE)[, , kTrade][, , "dm"])
+                                   aggregate = FALSE)[, , "dm"])
   } else if (datasource == "FAOpost2010") {
     mb <- collapseNames(calcOutput("FAOmassbalance",
                                    version = "post2010",
-                                   aggregate = FALSE)[, , kTrade][, , "dm"])
+                                   aggregate = FALSE)[, , "dm"])
   } else {
     stop("No data exist for the given datasource!")
   }

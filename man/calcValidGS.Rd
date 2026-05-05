@@ -4,7 +4,7 @@
 \alias{calcValidGS}
 \title{calcValidGS}
 \usage{
-calcValidGS(datasource = "FAO", indicator = "relative")
+calcValidGS(datasource = "FRA2025", indicator = "relative")
 }
 \arguments{
 \item{datasource}{Currently only  available for the "FAO" source}
@@ -15,7 +15,7 @@ calcValidGS(datasource = "FAO", indicator = "relative")
 List of magpie object with growing stock
 }
 \description{
-Returns historical FRA 2020 growing stock in million m3
+Returns historical FRA 2025 growing stock in million m3
 }
 \author{
 Abhijeet Mishra

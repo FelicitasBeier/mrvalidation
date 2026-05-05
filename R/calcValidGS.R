@@ -1,6 +1,6 @@
 #' calcValidGS
 #'
-#' Returns historical FRA 2020 growing stock in million m3
+#' Returns historical FRA 2025 growing stock in million m3
 #'
 #' @param datasource Currently only  available for the "FAO" source
 #' @param indicator type of indicator (relative or absolute)
@@ -10,14 +10,14 @@
 #' @importFrom magclass getNames
 #' @importFrom magpiesets FRAnames
 #'
-calcValidGS <- function(datasource = "FAO", indicator = "relative") {
+calcValidGS <- function(datasource = "FRA2025", indicator = "relative") {
 
-  if (datasource == "FAO") {
-    a <- collapseNames(readSource("FRA2020", subtype = "growing_stock", convert = TRUE))
+  if (datasource == "FRA2025") {
+    a <- collapseNames(readSource("FRA2025", subtype = "growing_stock", convert = TRUE))
     indicatorname  <- "Resources|Growing Stock|"
 
     if (indicator == "absolute") {
-      absolute <- a[, , grep(pattern = "gs_tot", x = getNames(a), value = TRUE)]
+      absolute <- a[, , grep(pattern = "gs_tot", x = getNames(a), value = TRUE)][, , "gs_tot_introduced", invert = TRUE]
       indicatorname <- paste0(indicatorname, indicator, "|+|")
       out <- absolute
       getNames(out) <- gsub(pattern = "gs_tot_", replacement = "", x = getNames(out))
@@ -25,13 +25,13 @@ calcValidGS <- function(datasource = "FAO", indicator = "relative") {
       unit <- "Mm3"
       weight <- NULL
     } else if (indicator == "relative") {
-      relative <- a[, , grep(pattern = "gs_ha", x = getNames(a), value = TRUE)]
+      relative <- a[, , grep(pattern = "gs_ha", x = getNames(a), value = TRUE)][, , "gs_ha_introduced", invert = TRUE]
       indicatorname <- paste0(indicatorname, indicator, "|+|")
       out <- relative
       getNames(out) <- gsub(pattern = "gs_ha_", replacement = "", x = getNames(out))
       getNames(out) <- FRAnames(getNames(out))
       unit <- "m3/ha"
-      weight <- collapseNames(readSource("FRA2020", subtype = "forest_area", convert = TRUE))
+      weight <- collapseNames(readSource("FRA2025", subtype = "forest_area", convert = TRUE))
       getNames(weight) <- FRAnames(getNames(weight))
       weight <- weight[, , getNames(out)]
       getNames(weight) <- paste0(indicatorname, getNames(weight), " (", unit, ")")
@@ -49,5 +49,5 @@ calcValidGS <- function(datasource = "FAO", indicator = "relative") {
   return(list(x = out,
               weight = weight,
               unit = unit,
-              description = "Growing stock from FAO FRA data"))
+              description = "Growing stock from FAO FRA2025 data"))
 }

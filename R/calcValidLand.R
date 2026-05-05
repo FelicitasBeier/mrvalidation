@@ -50,16 +50,16 @@ calcValidLand <- function(datasource = "MAgPIEown") {
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")
     out <- add_dimension(out, dim = 3.2, add = "model", nm = datasource)
     getNames(out, dim = 3) <- paste0(getNames(out, dim = 3), " (million ha)")
-  } else if (datasource == "FRA2020") {
+  } else if (datasource == "FRA2025") {
 
-    fraForest2020   <- readSource("FRA2020", "forest_area")
+    fraForest2025   <- readSource("FRA2025", "forest_area")
 
     # add secondary forest as difference between naturallyRegeneratingForest and primary forest
-    fraForest2020 <- mbind(fraForest2020,
-                           setNames(collapseNames(fraForest2020[, , "naturallyRegeneratingForest"]) -
-                                      collapseNames(fraForest2020[, , "primary"]), "secondary"))
-    fraForest2020[fraForest2020 < 0] <- 0
-    fraForest2020 <- fraForest2020[, , c("forestArea",
+    fraForest2025 <- mbind(fraForest2025,
+                           setNames(collapseNames(fraForest2025[, , "naturallyRegeneratingForest"]) -
+                                      collapseNames(fraForest2025[, , "primary"]), "secondary"))
+    fraForest2025[fraForest2025 < 0] <- 0
+    fraForest2025 <- fraForest2025[, , c("forestArea",
                                          "naturallyRegeneratingForest",
                                          "primary",
                                          "secondary",
@@ -68,7 +68,7 @@ calcValidLand <- function(datasource = "MAgPIEown") {
                                          "plantationForest",
                                          "otherPlantedForest")]
 
-    getNames(fraForest2020, dim = 1) <- c("Resources|Land Cover|+|Forest",
+    getNames(fraForest2025, dim = 1) <- c("Resources|Land Cover|+|Forest",
                                           "Resources|Land Cover|Forest|+|Natural Forest",
                                           "Resources|Land Cover|Forest|Natural Forest|+|Primary Forest",
                                           "Resources|Land Cover|Forest|Natural Forest|+|Secondary Forest",
@@ -78,11 +78,11 @@ calcValidLand <- function(datasource = "MAgPIEown") {
                                           "Resources|Land Cover|Forest|Planted Forest|Natural|+|NPI_NDC AR")
     yPast <- magpiesets::findset("past", noset = "original")
     yPast <- as.integer(substring(yPast, 2, 5))
-    yData <- getYears(fraForest2020, as.integer = TRUE)
+    yData <- getYears(fraForest2025, as.integer = TRUE)
     yInterpolate <- union(yPast[yPast >= min(yData)], yData)
-    fraForest2020 <- time_interpolate(fraForest2020, interpolated_year = yInterpolate,
+    fraForest2025 <- time_interpolate(fraForest2025, interpolated_year = yInterpolate,
                                       integrate_interpolated_years = TRUE, extrapolation_type = "constant")
-    out <- fraForest2020
+    out <- fraForest2025
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")
     out <- add_dimension(out, dim = 3.2, add = "model", nm = datasource)
     getNames(out, dim = 3) <- paste0(getNames(out, dim = 3), " (million ha)")
