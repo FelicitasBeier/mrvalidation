@@ -13,7 +13,8 @@ calcValidYield(
 }
 \arguments{
 \item{datasource}{Specify which datasource needs to be used.
-Currently only "FAO" and "calibratedLPJmL" is available.}
+Currently only "FAO", "Ostberg2023_FAO_LUH2v2" and
+"calibratedLPJmL" is available.}
 
 \item{faoVersion}{which FAO version to use (pre, post or joined 2010 data)}
 
