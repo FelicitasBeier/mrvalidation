@@ -21,7 +21,8 @@ calcValidCropareaDiversity <- function(index = "shannon", groupdiv = "agg1") {
   area <- collapseNames(area[, , "irrigated"]) + collapseNames(area[, , "rainfed"])
   fallow <- calcOutput("Fallow", aggregate = FALSE, cellular = TRUE)
   fallow <- setNames(fallow, "fallow")
-  area <- mbind(area, fallow)
+  combined_years <- intersect(getYears(fallow), getYears(area))
+  area <- mbind(area[, combined_years, ], fallow[, combined_years, ])
 
   land <- dimSums(area, dim = 3)
 
@@ -89,26 +90,26 @@ calcValidCropareaDiversity <- function(index = "shannon", groupdiv = "agg1") {
       )
     } else if (groupdiv == "agg2") {
       mix <- c(
-        cellvalue["tece"], #c3
-        cellvalue["maiz"] + cellvalue["trce"], #c4
-        cellvalue["rice_pro"], #rice
-        cellvalue["puls_pro"] + cellvalue["soybean"] + cellvalue["groundnut"], #legumes
-        cellvalue["begr"] + cellvalue["sugr_cane"] + cellvalue["betr"] + cellvalue["oilpalm"], #plantations
-        cellvalue["potato"] + cellvalue["cassav_sp"] + cellvalue["sugr_beet"], #roots
-        cellvalue["rapeseed"] + cellvalue["sunflower"] + cellvalue["cottn_pro"], #non-legume oil crops
-        rep(cellvalue["fallow"] / 2, 2), #fallow
-        rep(cellvalue["foddr"] / 2, 2), #foddr
-        rep(cellvalue["others"] / 5, 5) #fruits vegetables nuts
+        cellvalue["tece"], # c3
+        cellvalue["maiz"] + cellvalue["trce"], # c4
+        cellvalue["rice_pro"], # rice
+        cellvalue["puls_pro"] + cellvalue["soybean"] + cellvalue["groundnut"], # legumes
+        cellvalue["begr"] + cellvalue["sugr_cane"] + cellvalue["betr"] + cellvalue["oilpalm"], # plantations
+        cellvalue["potato"] + cellvalue["cassav_sp"] + cellvalue["sugr_beet"], # roots
+        cellvalue["rapeseed"] + cellvalue["sunflower"] + cellvalue["cottn_pro"], # non-legume oil crops
+        rep(cellvalue["fallow"] / 2, 2), # fallow
+        rep(cellvalue["foddr"] / 2, 2), # foddr
+        rep(cellvalue["others"] / 5, 5) # fruits vegetables nuts
       )
     } else if (groupdiv == "agg3") {
       mix <- c(
-        cellvalue["tece"] + cellvalue["maiz"] + cellvalue["trce"] + cellvalue["rice_pro"], #rice
-        cellvalue["puls_pro"] + cellvalue["soybean"] + cellvalue["groundnut"], #legumes
-        cellvalue["begr"] + cellvalue["sugr_cane"] + cellvalue["betr"] + cellvalue["oilpalm"], #plantations
+        cellvalue["tece"] + cellvalue["maiz"] + cellvalue["trce"] + cellvalue["rice_pro"], # rice
+        cellvalue["puls_pro"] + cellvalue["soybean"] + cellvalue["groundnut"], # legumes
+        cellvalue["begr"] + cellvalue["sugr_cane"] + cellvalue["betr"] + cellvalue["oilpalm"], # plantations
         cellvalue["potato"] + cellvalue["cassav_sp"] + cellvalue["sugr_beet"] +
-          cellvalue["rapeseed"] + cellvalue["sunflower"] + cellvalue["cottn_pro"] + cellvalue["foddr"], #other
-        cellvalue["others"], #fruits vegetables nuts
-        cellvalue["fallow"] #fallow
+          cellvalue["rapeseed"] + cellvalue["sunflower"] + cellvalue["cottn_pro"] + cellvalue["foddr"], # other
+        cellvalue["others"], # fruits vegetables nuts
+        cellvalue["fallow"] # fallow
       )
     } else {
       mix <- cellvalue
