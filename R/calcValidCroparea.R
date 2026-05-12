@@ -1,18 +1,23 @@
-#' calcValidCroparea
+#' @title calcValidCroparea
 #'
-#' Returns historical areas of individual crops. These are derived by
+#' @description Returns historical areas of individual crops. These are derived by
 #' correcting harvested areas to match to physical cropland areas. Both these
 #' datasets are from FAO. Output is meant to be used for model validation.
 #' Ostberg2023 is a slightly modified version of
 #' https://gmd.copernicus.org/articles/16/3375/2023/gmd-16-3375-2023-assets.html
 #'
+#' @param datasource "FAO": croparea according to FAOSTAT,
+#'                   "ostberg2023": croparea according to LandInG data harmonization
+#'                                  by Ostberg et al. (2023)
+#'                    "FAOfallow": fallow land according to FAOSTAT
+#' @param detail TRUE: data provided for different crop types, FALSE: aggregated data
 #'
-#' @param datasource Currently only "FAO" available
-#' @param detail how much detail?
-#' @return list of magpie object with data and weight
-#' @author Benjamin Bodirsky, Ulrich Kreidenweis
+#' @return magpie object
+#' @author Benjamin Bodirsky, Ulrich Kreidenweis, Felicitas Beier
 #' @importFrom magpiesets reporthelper summationhelper
 #' @importFrom magclass getNames
+#'
+
 calcValidCroparea <- function(datasource = "FAO", detail = FALSE) {
 
   if (datasource == "FAO") {
@@ -24,10 +29,10 @@ calcValidCroparea <- function(datasource = "FAO", detail = FALSE) {
 
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")
     out <- add_dimension(out, dim = 3.2, add = "model", nm = datasource)
+
   } else if (datasource == "ostberg2023") {
     data <- calcOutput("CropareaLandInG", aggregate = FALSE)
-    croparea <- reporthelper(
-                             x = data, dim = 3.1,
+    croparea <- reporthelper(x = data, dim = 3.1,
                              level_zero_name = "Resources|Land Cover|Cropland|Croparea",
                              detail = detail)
     croparea <- summationhelper(croparea, sep = "+")
@@ -35,14 +40,18 @@ calcValidCroparea <- function(datasource = "FAO", detail = FALSE) {
                                   aggregate = FALSE,
                                   cellular = FALSE),
                        paste("Resources|Land Cover|Cropland|+|", reportingnames("crop_fallow"), sep = ""))
-    cropland <- setNames(dimSums(mbind(data, fallow), dim = 3.1),
+    commonYrs <- intersect(getYears(croparea, as.integer = TRUE), getYears(fallow, as.integer = TRUE))
+    cropland <- setNames(dimSums(mbind(data[, , commonYrs],
+                                       fallow[, , commonYrs]), dim = 3.1),
                          "Resources|Land Cover|+|Cropland")
-    cropareatotal <- setNames(dimSums(mbind(data), dim = 3.1),
+    cropareatotal <- setNames(dimSums(data, dim = 3.1),
                               "Resources|Land Cover|Cropland|+|Croparea")
-    out <- mbind(cropland, cropareatotal, fallow, croparea)
+    out <- mbind(cropland[, , commonYrs], cropareatotal[, , commonYrs],
+                 fallow[, , commonYrs], croparea[, , commonYrs])
     getNames(out) <- paste(getNames(out), "(million ha)", sep = " ")
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")
     out <- add_dimension(out, dim = 3.2, add = "model", nm = "Ostberg2023")
+
   } else if (datasource == "FAOfallow") {
     fallow <- calcOutput("FAOLand", aggregate = FALSE)[, , "6640", pmatch = TRUE]
     # cut off incomplete data before 2001

@@ -2,7 +2,7 @@
 
 R package **mrvalidation**, version **2.67.1**
 
-[![CRAN status](https://www.r-pkg.org/badges/version/mrvalidation)](https://cran.r-project.org/package=mrvalidation) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4317826.svg)](https://doi.org/10.5281/zenodo.4317826) [![R build status](https://github.com/pik-piam/mrvalidation/workflows/check/badge.svg)](https://github.com/pik-piam/mrvalidation/actions) [![codecov](https://codecov.io/gh/pik-piam/mrvalidation/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pik-piam/mrvalidation) [![r-universe](https://pik-piam.r-universe.dev/badges/mrvalidation)](https://pik-piam.r-universe.dev/builds)
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4317826.svg)](https://doi.org/10.5281/zenodo.4317826) [![R build status](https://github.com/pik-piam/mrvalidation/workflows/check/badge.svg)](https://github.com/pik-piam/mrvalidation/actions) [![codecov](https://codecov.io/gh/pik-piam/mrvalidation/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pik-piam/mrvalidation) [![r-universe](https://pik-piam.r-universe.dev/badges/mrvalidation)](https://pik-piam.r-universe.dev/builds)
 
 ## Purpose and Functionality
 
@@ -48,7 +48,7 @@ A BibTeX entry for LaTeX users is
   title = {mrvalidation: madrat data preparation for validation purposes},
   author = {Benjamin Leon Bodirsky and Stephen Wirth and Kristine Karstens and Florian Humpenoeder and Mishko Stevanovic and Abhijeet Mishra and Anne Biewald and Isabelle Weindl and Felicitas Beier and David Chen and Michael Crawford and Debbora Leip and Edna {Molina Bacca} and Ulrich Kreidenweis and Amsalu {W. Yalew} and Patrick {von Jeetze} and Xiaoxi Wang and Jan Philipp Dietrich and Marcos Alves},
   doi = {10.5281/zenodo.4317826},
-  date = {2026-04-09},
+  date = {2026-05-12},
   year = {2026},
   url = {https://github.com/pik-piam/mrvalidation},
   note = {Version: 2.67.1},

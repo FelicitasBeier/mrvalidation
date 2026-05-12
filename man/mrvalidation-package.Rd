@@ -22,6 +22,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Benjamin Leon Bodirsky \email{bodirsky@pik-potsdam.de}
   \item Stephen Wirth
   \item Kristine Karstens
   \item Florian Humpenoeder
