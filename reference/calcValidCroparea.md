@@ -16,16 +16,18 @@ calcValidCroparea(datasource = "FAO", detail = FALSE)
 
 - datasource:
 
-  Currently only "FAO" available
+  "FAO": croparea according to FAOSTAT, "ostberg2023": croparea
+  according to LandInG data harmonization by Ostberg et al. (2023)
+  "FAOfallow": fallow land according to FAOSTAT
 
 - detail:
 
-  how much detail?
+  TRUE: data provided for different crop types, FALSE: aggregated data
 
 ## Value
 
-list of magpie object with data and weight
+magpie object
 
 ## Author
 
-Benjamin Bodirsky, Ulrich Kreidenweis
+Benjamin Bodirsky, Ulrich Kreidenweis, Felicitas Beier

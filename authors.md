@@ -49,11 +49,11 @@ Bodirsky B, Wirth S, Karstens K, Humpenoeder F, Stevanovic M, Mishra A,
 Biewald A, Weindl I, Beier F, Chen D, Crawford M, Leip D, Molina Bacca
 E, Kreidenweis U, W. Yalew A, von Jeetze P, Wang X, Dietrich J, Alves M
 (2026). *mrvalidation: madrat data preparation for validation purposes*.
-R package version 2.67.0.
+R package version 2.67.1.
 
     @Manual{,
       title = {mrvalidation: madrat data preparation for validation purposes},
       author = {Benjamin Leon Bodirsky and Stephen Wirth and Kristine Karstens and Florian Humpenoeder and Mishko Stevanovic and Abhijeet Mishra and Anne Biewald and Isabelle Weindl and Felicitas Beier and David Chen and Michael Crawford and Debbora Leip and Edna {Molina Bacca} and Ulrich Kreidenweis and Amsalu {W. Yalew} and Patrick {von Jeetze} and Xiaoxi Wang and Jan Philipp Dietrich and Marcos Alves},
       year = {2026},
-      note = {R package version 2.67.0},
+      note = {R package version 2.67.1},
     }
