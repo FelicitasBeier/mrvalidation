@@ -53,6 +53,8 @@ calcValidBEYield <- function(cellular = FALSE) {
   if (!cellular) {
     out <- toolAggregate(out, weight = weightOut, to = "iso", zeroWeight = "allow")
     out <- toolCountryFill(out, fill = 0)
+    weightOut <- toolAggregate(weightOut, weight = NULL, to = "iso")
+    weightOut <- toolCountryFill(weightOut, fill = 0)
   }
 
   return(list(x            = out,
