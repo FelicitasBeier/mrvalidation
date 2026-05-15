@@ -56,7 +56,7 @@ calcValidBEYield <- function(cellular = FALSE) {
   }
 
   return(list(x            = out,
-              weight       = NULL,
+              weight       = weightOut,
               unit         = "t DM/ha",
               min          = 0,
               max          = 100,
