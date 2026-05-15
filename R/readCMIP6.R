@@ -15,8 +15,7 @@
 #' @importFrom tools file_path_sans_ext
 #' @importFrom stringr str_split str_extract
 #' @importFrom utils read.table
-#' @importFrom dplyr %>% select rename mutate filter summarise pull bind_rows group_by n distinct
-#' sample_n semi_join arrange
+#' @importFrom dplyr %>% select rename mutate filter summarise pull bind_rows group_by n distinct sample_n semi_join arrange
 #' @importFrom tidyr expand_grid nest unnest
 #' @importFrom purrr map
 #' @importFrom rlang .data

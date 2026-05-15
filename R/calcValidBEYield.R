@@ -49,6 +49,5 @@ calcValidBEYield <- function() {
               unit         = "t DM/ha",
               min          = 0,
               max          = 100,
-              isocountries = FALSE,
               description  = "Bioenergy crop yields from Li et al. (2020), doi:10.5194/essd-12-789-2020"))
 }
