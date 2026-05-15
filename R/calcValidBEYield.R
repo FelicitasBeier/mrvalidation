@@ -52,7 +52,7 @@ calcValidBEYield <- function(cellular = FALSE) {
   # aggregate to iso countries for aggregation to regional resolution
   if (!cellular) {
     out <- toolAggregate(out, weight = weightOut, to = "iso", zeroWeight = "allow")
-    out <- toolCountryFill(out, fill = NA)
+    out <- toolCountryFill(out, fill = 0)
   }
 
   return(list(x            = out,
