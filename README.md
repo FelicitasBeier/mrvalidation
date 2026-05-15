@@ -1,6 +1,6 @@
 # madrat data preparation for validation purposes
 
-R package **mrvalidation**, version **2.67.0.2**
+R package **mrvalidation**, version **2.67.0.3**
 
   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4317826.svg)](https://doi.org/10.5281/zenodo.4317826) [![R build status](https://github.com/pik-piam/mrvalidation/workflows/check/badge.svg)](https://github.com/pik-piam/mrvalidation/actions) [![codecov](https://codecov.io/gh/pik-piam/mrvalidation/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pik-piam/mrvalidation) [![r-universe](https://pik-piam.r-universe.dev/badges/mrvalidation)](https://pik-piam.r-universe.dev/builds)
 
@@ -39,7 +39,7 @@ In case of questions / problems please contact Benjamin Leon Bodirsky <bodirsky@
 
 To cite package **mrvalidation** in publications use:
 
-Bodirsky B, Wirth S, Karstens K, Humpenoeder F, Stevanovic M, Mishra A, Biewald A, Weindl I, Beier F, Chen D, Crawford M, Leip D, Molina Bacca E, Kreidenweis U, W. Yalew A, von Jeetze P, Wang X, Dietrich J, Alves M (2026). "mrvalidation: madrat data preparation for validation purposes." doi:10.5281/zenodo.4317826 <https://doi.org/10.5281/zenodo.4317826>, Version: 2.67.0.2, <https://github.com/pik-piam/mrvalidation>.
+Bodirsky B, Wirth S, Karstens K, Humpenoeder F, Stevanovic M, Mishra A, Biewald A, Weindl I, Beier F, Chen D, Crawford M, Leip D, Molina Bacca E, Kreidenweis U, W. Yalew A, von Jeetze P, Wang X, Dietrich J, Alves M (2026). "mrvalidation: madrat data preparation for validation purposes." doi:10.5281/zenodo.4317826 <https://doi.org/10.5281/zenodo.4317826>, Version: 2.67.0.3, <https://github.com/pik-piam/mrvalidation>.
 
 A BibTeX entry for LaTeX users is
 
@@ -51,6 +51,6 @@ A BibTeX entry for LaTeX users is
   date = {2026-05-15},
   year = {2026},
   url = {https://github.com/pik-piam/mrvalidation},
-  note = {Version: 2.67.0.2},
+  note = {Version: 2.67.0.3},
 }
 ```

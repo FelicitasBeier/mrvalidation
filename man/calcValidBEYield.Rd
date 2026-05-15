@@ -4,7 +4,13 @@
 \alias{calcValidBEYield}
 \title{calcValidBEYield}
 \usage{
-calcValidBEYield()
+calcValidBEYield(cellular = FALSE)
+}
+\arguments{
+\item{cellular}{determines whether data is returned at grid cell level
+For aggregate = FALSE, cellular should be set to TRUE
+For aggregate = "region+global", cellular should be set to FALSE
+such that iso countries can be returned. Default is FALSE.}
 }
 \value{
 List of magpie objects with results on cellular level, weight, unit, min, max, description.
@@ -22,5 +28,5 @@ calcOutput("ValidBEYield", aggregate = FALSE)
 [mrcommons::calcBEYield()]
 }
 \author{
-Kristine Karstens
+Kristine Karstens, Felicitas Beier, Patrick Rein
 }

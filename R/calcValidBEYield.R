@@ -2,14 +2,19 @@
 #' @description Validation dataset for bioenergy crop yields from Li et al. (2020).
 #' Each of the five crop types is returned as an independent entry at cellular level.
 #'
+#' @param cellular determines whether data is returned at grid cell level
+#'                 For aggregate = FALSE, cellular should be set to TRUE
+#'                 For aggregate = "region+global", cellular should be set to FALSE
+#'                 such that iso countries can be returned. Default is FALSE.
+#'
 #' @return List of magpie objects with results on cellular level, weight, unit, min, max, description.
-#' @author Kristine Karstens
+#' @author Kristine Karstens, Felicitas Beier, Patrick Rein
 #' @seealso [mrcommons::calcBEYield()]
 #' @examples
 #' \dontrun{
 #' calcOutput("ValidBEYield", aggregate = FALSE)
 #' }
-calcValidBEYield <- function() {
+calcValidBEYield <- function(cellular = FALSE) {
 
   crops <- c(Eucalypt    = "Bioenergy crops|Short rotation trees",
              Poplar      = "Bioenergy crops|Short rotation trees",
@@ -44,10 +49,17 @@ calcValidBEYield <- function() {
   weightOut[is.na(out)] <- 0
   out[is.na(out)] <- 0
 
+  # aggregate to iso countries for aggregation to regional resolution
+  if (!cellular) {
+    out <- toolAggregate(out, weight = weightOut, to = "iso", zeroWeight = "allow")
+    out <- toolCountryFill(out, fill = NA)
+  }
+
   return(list(x            = out,
-              weight       = weightOut,
+              weight       = NULL,
               unit         = "t DM/ha",
               min          = 0,
               max          = 100,
+              isocountries = TRUE,
               description  = "Bioenergy crop yields from Li et al. (2020), doi:10.5194/essd-12-789-2020"))
 }
