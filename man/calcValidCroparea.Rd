@@ -7,12 +7,15 @@
 calcValidCroparea(datasource = "FAO", detail = FALSE)
 }
 \arguments{
-\item{datasource}{Currently only "FAO" available}
+\item{datasource}{"FAO": croparea according to FAOSTAT,
+"ostberg2023": croparea according to LandInG data harmonization
+               by Ostberg et al. (2023)
+ "FAOfallow": fallow land according to FAOSTAT}
 
-\item{detail}{how much detail?}
+\item{detail}{TRUE: data provided for different crop types, FALSE: aggregated data}
 }
 \value{
-list of magpie object with data and weight
+magpie object
 }
 \description{
 Returns historical areas of individual crops. These are derived by
@@ -22,5 +25,5 @@ Ostberg2023 is a slightly modified version of
 https://gmd.copernicus.org/articles/16/3375/2023/gmd-16-3375-2023-assets.html
 }
 \author{
-Benjamin Bodirsky, Ulrich Kreidenweis
+Benjamin Bodirsky, Ulrich Kreidenweis, Felicitas Beier
 }
