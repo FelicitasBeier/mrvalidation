@@ -389,7 +389,9 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
              file = valfile, append = TRUE, try = TRUE)
 
   # Diversity indices
-  calcOutput(type = "ValidBII", aggregate = aggregate,
+  calcOutput(type = "ValidBII", datasource = "Phillips", aggregate = aggregate,
+             file = valfile, append = TRUE, try = TRUE)
+  calcOutput(type = "ValidBII", datasource = "DePalma", aggregate = aggregate,
              file = valfile, append = TRUE, try = TRUE)
   calcOutput(type = "ValidCropareaDiversity", index = "shannon", aggregate = aggregate,
              file = valfile, append = TRUE, try = TRUE)
