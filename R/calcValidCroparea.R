@@ -22,7 +22,8 @@ calcValidCroparea <- function(datasource = "FAO", detail = FALSE) {
 
   if (datasource == "FAO") {
     data <- calcOutput("Croparea", sectoral = "kcr", physical = TRUE, aggregate = FALSE)
-    out <- reporthelper(x = data, dim = 3.1, level_zero_name = "Resources|Land Cover|Cropland|Croparea",
+    out <- reporthelper(x = data, dim = 3.1,
+                        level_zero_name = "Resources|Land Cover|Cropland|Croparea",
                         detail = detail)
     out <- summationhelper(out)
     getNames(out) <- paste(getNames(out), "(million ha)", sep = " ")
@@ -39,15 +40,17 @@ calcValidCroparea <- function(datasource = "FAO", detail = FALSE) {
     fallow <- setNames(calcOutput("FallowLand",
                                   aggregate = FALSE,
                                   cellular = FALSE),
-                       paste("Resources|Land Cover|Cropland|+|", reportingnames("crop_fallow"), sep = ""))
-    commonYrs <- intersect(getYears(croparea, as.integer = TRUE), getYears(fallow, as.integer = TRUE))
-    cropland <- setNames(dimSums(mbind(data[, , commonYrs],
-                                       fallow[, , commonYrs]), dim = 3.1),
+                       paste("Resources|Land Cover|Cropland|+|",
+                             reportingnames("crop_fallow"), sep = ""))
+    commonYrs <- intersect(getYears(croparea, as.integer = TRUE),
+                           getYears(fallow, as.integer = TRUE))
+    cropland <- setNames(dimSums(mbind(data[, commonYrs, ],
+                                       fallow[, commonYrs, ]), dim = 3.1),
                          "Resources|Land Cover|+|Cropland")
     cropareatotal <- setNames(dimSums(data, dim = 3.1),
                               "Resources|Land Cover|Cropland|+|Croparea")
-    out <- mbind(cropland[, , commonYrs], cropareatotal[, , commonYrs],
-                 fallow[, , commonYrs], croparea[, , commonYrs])
+    out <- mbind(cropland[, commonYrs, ], cropareatotal[, commonYrs, ],
+                 fallow[, commonYrs, ], croparea[, commonYrs, ])
     getNames(out) <- paste(getNames(out), "(million ha)", sep = " ")
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")
     out <- add_dimension(out, dim = 3.2, add = "model", nm = "Ostberg2023")
