@@ -1,6 +1,6 @@
 # madrat data preparation for validation purposes
 
-R package **mrvalidation**, version **2.69.2**
+R package **mrvalidation**, version **2.69.3**
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4317826.svg)](https://doi.org/10.5281/zenodo.4317826)
 [![R build
@@ -53,7 +53,7 @@ Biewald A, Weindl I, Beier F, Chen D, Crawford M, Leip D, Molina Bacca
 E, Kreidenweis U, W. Yalew A, von Jeetze P, Wang X, Dietrich J, Alves M
 (2026). “mrvalidation: madrat data preparation for validation purposes.”
 <doi:10.5281/zenodo.4317826> <https://doi.org/10.5281/zenodo.4317826>,
-Version: 2.69.2, <https://github.com/pik-piam/mrvalidation>.
+Version: 2.69.3, <https://github.com/pik-piam/mrvalidation>.
 
 A BibTeX entry for LaTeX users is
 
@@ -62,9 +62,9 @@ A BibTeX entry for LaTeX users is
  title = {mrvalidation: madrat data preparation for validation purposes},
  author = {Benjamin Leon Bodirsky and Stephen Wirth and Kristine Karstens and Florian Humpenoeder and Mishko Stevanovic and Abhijeet Mishra and Anne Biewald and Isabelle Weindl and Felicitas Beier and David Chen and Michael Crawford and Debbora Leip and Edna {Molina Bacca} and Ulrich Kreidenweis and Amsalu {W. Yalew} and Patrick {von Jeetze} and Xiaoxi Wang and Jan Philipp Dietrich and Marcos Alves},
  doi = {10.5281/zenodo.4317826},
- date = {2026-05-29},
+ date = {2026-06-04},
  year = {2026},
  url = {https://github.com/pik-piam/mrvalidation},
- note = {Version: 2.69.2},
+ note = {Version: 2.69.3},
 }
 ```
