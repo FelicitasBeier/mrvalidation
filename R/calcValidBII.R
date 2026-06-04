@@ -63,6 +63,12 @@ calcValidBII <- function(datasource = "Phillips") {
     bii      <- toolAggregate(naFix$x, weight = naFix$weight, to = "iso", dim = 1,
                               zeroWeight = "setNA")
     bii      <- toolCountryFill(bii, fill = NA, verbosity = 2)
+    # Fill ISOs without lpjcell coverage (~28 microstates/islands) with the year
+    # mean, matching the readBII Phillips fill. Negligible weight in aggregates;
+    # avoids madrat NA warnings on every fullVALIDATION run.
+    for (y in getYears(bii)) {
+      bii[, y, ][which(is.na(bii[, y, ]))] <- mean(bii[, y, ], na.rm = TRUE)
+    }
     bii      <- add_dimension(bii, dim = 3.1, add = "scenario", nm = "historical")
     bii      <- add_dimension(bii, dim = 3.2, add = "model",    nm = "De Palma et al 2024")
     descr    <- paste("Historical BII, De Palma et al. 2024 v2.1.1",
