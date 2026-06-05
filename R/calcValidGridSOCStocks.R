@@ -1,7 +1,7 @@
 #' @title calcValidGridSOCStocks
 #' @description calculates the validation data for the gridded soil carbon pools
 #'
-#' @param datasource Datasources for validation data, e.g. LPJ_IPCC2006, LPJmL_natural, ...
+#' @param datasource Datasources for validation data, e.g. LPJ_IPCC2006, SoilGrids, ...
 #' @param baseyear baseyear for calculating soil carbon stock change (for LPJ_IPCC2006 only)
 #' @param intensive If FALSE (default) total stocks will be returned; otherwise (TRUE) carbon densities.
 #'
@@ -62,18 +62,11 @@ calcValidGridSOCStocks <- function(datasource = "LPJ_IPCC2006", baseyear = 1995,
     out <- add_dimension(out, dim = 3.2, add = "model", nm = datasource)
     weight <- NULL
 
-  } else if (datasource %in% c("LPJmL4Paper",
-                               "SoilGrids", "GSOC", "WISE", "SoilGrids2:new",
+  } else if (datasource %in% c("SoilGrids", "GSOC", "WISE", "SoilGrids2:new",
                                "SoilGrids2:q05_new", "SoilGrids2:q95_new",
                                "SOCDebtPaper")) {
 
-    if (datasource == "LPJmL4Paper") {
-
-      out <- calcOutput("LPJmL4", version = "LPJmL4", climatetype = "LPJmL4Paper",
-                        subtype = "soilc_layer", aggregate = FALSE)
-      out <- collapseNames(out[, , 1] + 1 / 3 * out[, , 2])
-
-    } else if (datasource == "GSOC") {
+    if (datasource == "GSOC") {
 
       out <- readSource("GSOC",  convert = "onlycorrect")
       out <- mbind(setYears(out, "y2015"), setYears(out, "y2016"), setYears(out, "y2017"))

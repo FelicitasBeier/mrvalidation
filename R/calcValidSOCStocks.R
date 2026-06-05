@@ -1,7 +1,7 @@
 #' @title calcValidSOCStocks
 #' @description calculates the validation data for the soil carbon pools
 #'
-#' @param datasource Datasources for validation data, e.g. LPJ_IPCC2006, LPJmL_natural
+#' @param datasource Datasources for validation data, e.g. LPJ_IPCC2006, SoilGrids
 #' @param baseyear baseyear for calculating soil carbon stock change
 #'
 #' @return List of magpie objects with results on country level, weight on country level, unit and description.
@@ -105,23 +105,6 @@ calcValidSOCStocks <- function(datasource = "histSOCbudget", baseyear = 1995) {
       setNames(somStock[, , "noncropland"][, , "target_soilc"],
                "Resources|Soil Carbon|Target|Stock|SOC in top 30 cm|+|Noncropland Soils (Mt C)")
     )
-
-    out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")
-    out <- add_dimension(out, dim = 3.2, add = "model", nm = datasource)
-
-
-  } else if (datasource == "LPJmL4Paper") {
-
-    soilc <- calcOutput("LPJmL4", version = "LPJmL4", climatetype = "LPJmL4Paper",
-                        subtype = "soilc_layer", aggregate = FALSE)
-    soilc <- collapseNames(soilc[, , 1] + 1 / 3 * soilc[, , 2])
-    area <- calcOutput("LandArea", aggregate = FALSE)
-    stock <- soilc * area
-
-    mapping <- toolGetMapping(name = "CountryToCellMapping.csv", type = "cell", where = "mappingfolder")
-    stock   <- toolAggregate(stock, rel = mapping, from = "celliso", to = "iso", dim = 1)
-    stock   <- toolCountryFill(stock, fill = 0)
-    out     <- setNames(stock, "Resources|Soil Carbon|Actual|Stock|SOC in top 30 cm (Mt C)")
 
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")
     out <- add_dimension(out, dim = 3.2, add = "model", nm = datasource)
