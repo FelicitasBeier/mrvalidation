@@ -7,7 +7,7 @@
 calcValidSOCStocks(datasource = "histSOCbudget", baseyear = 1995)
 }
 \arguments{
-\item{datasource}{Datasources for validation data, e.g. LPJ_IPCC2006, LPJmL_natural}
+\item{datasource}{Datasources for validation data, e.g. LPJ_IPCC2006, SoilGrids}
 
 \item{baseyear}{baseyear for calculating soil carbon stock change}
 }
