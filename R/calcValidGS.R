@@ -14,10 +14,17 @@ calcValidGS <- function(datasource = "FRA2025", indicator = "relative") {
 
   if (datasource == "FRA2025") {
     a <- collapseNames(readSource("FRA2025", subtype = "growing_stock", convert = TRUE))
+    # The FRA2025 source labels the primary/introduced growing-stock totals with an inconsistent
+    # "gs_total_" prefix (all other categories use "gs_tot_"); normalise it so the category drops
+    # and the "gs_tot_" name cleanup below match for every category (otherwise the absolute branch
+    # leaks "introduced" and renders garbled names like "GS Total Primary Forest").
+    getNames(a) <- gsub("gs_total_", "gs_tot_", getNames(a))
     indicatorname  <- "Resources|Growing Stock|"
 
     if (indicator == "absolute") {
-      absolute <- a[, , grep(pattern = "gs_tot", x = getNames(a), value = TRUE)][, , "gs_tot_introduced", invert = TRUE]
+      # drop the "introduced" plantation series and the broken FRA primary-forest series
+      # (primary GS ~18 m3/ha area-weighted -> implausible; FRA reports it too sparsely to use)
+      absolute <- a[, , grep(pattern = "gs_tot", x = getNames(a), value = TRUE)][, , c("gs_tot_introduced", "gs_tot_primary"), invert = TRUE]
       indicatorname <- paste0(indicatorname, indicator, "|+|")
       out <- absolute
       getNames(out) <- gsub(pattern = "gs_tot_", replacement = "", x = getNames(out))
@@ -25,7 +32,8 @@ calcValidGS <- function(datasource = "FRA2025", indicator = "relative") {
       unit <- "Mm3"
       weight <- NULL
     } else if (indicator == "relative") {
-      relative <- a[, , grep(pattern = "gs_ha", x = getNames(a), value = TRUE)][, , "gs_ha_introduced", invert = TRUE]
+      # drop the "introduced" plantation series and the broken FRA primary-forest series (see above)
+      relative <- a[, , grep(pattern = "gs_ha", x = getNames(a), value = TRUE)][, , c("gs_ha_introduced", "gs_ha_primary"), invert = TRUE]
       indicatorname <- paste0(indicatorname, indicator, "|+|")
       out <- relative
       getNames(out) <- gsub(pattern = "gs_ha_", replacement = "", x = getNames(out))
