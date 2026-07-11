@@ -68,14 +68,16 @@ calcValidLand <- function(datasource = "MAgPIEown") {
                                          "plantationForest",
                                          "otherPlantedForest")]
 
+    # Planted forest keeps FRA's split into timber plantations and other planted forest, matching the
+    # model forestry pools.
     getNames(fraForest2025, dim = 1) <- c("Resources|Land Cover|+|Forest",
                                           "Resources|Land Cover|Forest|+|Natural Forest",
                                           "Resources|Land Cover|Forest|Natural Forest|+|Primary Forest",
                                           "Resources|Land Cover|Forest|Natural Forest|+|Secondary Forest",
                                           "Resources|Land Cover|Cropland|+|Tree Cover",
                                           "Resources|Land Cover|Forest|+|Planted Forest",
-                                          "Resources|Land Cover|Forest|Planted Forest|Plantations|+|Timber",
-                                          "Resources|Land Cover|Forest|Planted Forest|Natural|+|NPI_NDC AR")
+                                          "Resources|Land Cover|Forest|Planted Forest|+|Timber",
+                                          "Resources|Land Cover|Forest|Planted Forest|+|Other Planted")
     yPast <- magpiesets::findset("past", noset = "original")
     yPast <- as.integer(substring(yPast, 2, 5))
     yData <- getYears(fraForest2025, as.integer = TRUE)
