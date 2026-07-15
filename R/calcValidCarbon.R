@@ -45,7 +45,7 @@ calcValidCarbon <- function(datasource = "LPJmL4_for_MAgPIE_44ac93de:GSWP3-W5E5:
   stock <- mbind(setNames(soilc, "soilc"), setNames(litc, "litc"), setNames(vegc, "vegc"))
   rm(soilc, litc, vegc)
 
-  area  <- dimSums(calcOutput("LUH3", landuseTypes = "LUH3", irrigation = FALSE,
+  area  <- dimSums(calcOutput("LanduseInitialisation",
                               cellular = TRUE, years = "y1995",
                               aggregate = FALSE),
                    dim = 3)
