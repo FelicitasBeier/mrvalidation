@@ -20,11 +20,6 @@ calcValidAnnualCarbonLTS <- function(datasource = "Lauk_et_al") {
     out <- emis
     getNames(out) <- paste0(indicatorname, " (", unit, ")")
 
-    indicatornameRaw <- "Emissions|CO2|Land RAW|Land-use Change|Wood products|+|Storage"
-    raw <- emis
-    getNames(raw) <- paste0(indicatornameRaw, " (", unit, ")")
-    out <- mbind(out, raw)
-
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")
     out <- add_dimension(out, dim = 3.2, add = "model", nm = datasource)
 
@@ -40,11 +35,6 @@ calcValidAnnualCarbonLTS <- function(datasource = "Lauk_et_al") {
     future <- tail(getYears(annual), 10)
 
     outHistorical <- annual[, future, , invert = TRUE]
-
-    indicatornameRaw <- "Emissions|CO2|Land RAW|Land-use Change|Wood products|+|Storage"
-    raw <- outHistorical
-    getNames(raw) <- paste0(indicatornameRaw, " (", unit, ")")
-    outHistorical <- mbind(outHistorical, raw)
 
     outHistorical <- add_dimension(outHistorical, dim = 3.1, add = "scenario", nm = "historical")
     outHistorical <- add_dimension(outHistorical, dim = 3.2, add = "model", nm = datasource)
@@ -65,11 +55,6 @@ calcValidAnnualCarbonLTS <- function(datasource = "Lauk_et_al") {
     future <- tail(getYears(annual), 10)
 
     outProjection <- annual[, future, ]
-
-    indicatornameRaw <- "Emissions|CO2|Land RAW|Land-use Change|Wood products|+|Storage"
-    raw <- outProjection
-    getNames(raw) <- paste0(indicatornameRaw, " (", unit, ")")
-    outProjection <- mbind(outProjection, raw)
 
     outProjection <- add_dimension(outProjection, dim = 3.1, add = "scenario", nm = "projection")
     outProjection <- add_dimension(outProjection, dim = 3.2, add = "model", nm = datasource)

@@ -19,11 +19,6 @@
 calcValidEmissions <- function(datasource = "CEDS") {
 
   out <- calcOutput("LandEmissions", aggregate = FALSE, datasource = datasource, warnNA = FALSE)
-  if ("Emissions|CO2|Land|+|Land-use Change (Mt CO2/yr)" %in% getNames(out, dim = 3)) {
-    emisCO2 <- out[, , "Emissions|CO2|Land|+|Land-use Change (Mt CO2/yr)"]
-    getNames(emisCO2, dim = 3) <- "Emissions|CO2|Land RAW|+|Land-use Change (Mt CO2/yr)"
-    out <- mbind(out, emisCO2)
-  }
 
   return(list(x = out,
               weight = NULL,
