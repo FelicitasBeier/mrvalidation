@@ -24,7 +24,8 @@ calcValidGS <- function(datasource = "FRA2025", indicator = "relative") {
     if (indicator == "absolute") {
       # drop the "introduced" plantation series and the broken FRA primary-forest series
       # (primary GS ~18 m3/ha area-weighted -> implausible; FRA reports it too sparsely to use)
-      absolute <- a[, , grep(pattern = "gs_tot", x = getNames(a), value = TRUE)][, , c("gs_tot_introduced", "gs_tot_primary"), invert = TRUE]
+      absolute <- a[, , grep(pattern = "gs_tot", x = getNames(a), value = TRUE)]
+      absolute <- absolute[, , c("gs_tot_introduced", "gs_tot_primary"), invert = TRUE]
       indicatorname <- paste0(indicatorname, indicator, "|+|")
       out <- absolute
       getNames(out) <- gsub(pattern = "gs_tot_", replacement = "", x = getNames(out))
@@ -33,7 +34,8 @@ calcValidGS <- function(datasource = "FRA2025", indicator = "relative") {
       weight <- NULL
     } else if (indicator == "relative") {
       # drop the "introduced" plantation series and the broken FRA primary-forest series (see above)
-      relative <- a[, , grep(pattern = "gs_ha", x = getNames(a), value = TRUE)][, , c("gs_ha_introduced", "gs_ha_primary"), invert = TRUE]
+      relative <- a[, , grep(pattern = "gs_ha", x = getNames(a), value = TRUE)]
+      relative <- relative[, , c("gs_ha_introduced", "gs_ha_primary"), invert = TRUE]
       indicatorname <- paste0(indicatorname, indicator, "|+|")
       out <- relative
       getNames(out) <- gsub(pattern = "gs_ha_", replacement = "", x = getNames(out))

@@ -36,8 +36,8 @@ readGlobalCarbonBudget <- function() {
     "Emissions|CO2|Land|Land-use Change|+|Timber"                = "wood harvest"
   )
 
-  yearData <- eluc %>%
-    dplyr::select(.data$Year) %>%
+  yearData <- eluc |>
+    dplyr::select(.data$Year) |>
     dplyr::slice(-1)
 
   elucOut <- NULL
@@ -59,13 +59,13 @@ readGlobalCarbonBudget <- function() {
            modelNames[m], " - check the GCB.xlsx 'Land-Use Change Emissions' sheet layout.")
     }
 
-    modelData <- eluc %>%
-      dplyr::select(dplyr::all_of(unname(selectedCols))) %>%
+    modelData <- eluc |>
+      dplyr::select(dplyr::all_of(unname(selectedCols))) |>
       dplyr::slice(-1)
 
     names(modelData) <- names(componentMap)
 
-    modelData <- dplyr::bind_cols(yearData, modelData) %>%
+    modelData <- dplyr::bind_cols(yearData, modelData) |>
       dplyr::mutate(dplyr::across(dplyr::everything(), as.numeric))
 
     modelOut <- magclass::as.magpie(modelData)
@@ -76,9 +76,9 @@ readGlobalCarbonBudget <- function() {
 
   # -----------------------------------------------------------------------------------------------------------------
   # Indirect emissions from climate change
-  sland <- suppressMessages(readxl::read_excel("GCB.xlsx", sheet = "Terrestrial Sink", skip = 27)) %>%
-    select(.data$Year, .data$GCB) %>%
-    rename(`Emissions|CO2|Land|+|Indirect` = .data$GCB) %>%
+  sland <- suppressMessages(readxl::read_excel("GCB.xlsx", sheet = "Terrestrial Sink", skip = 27)) |>
+    select(.data$Year, .data$GCB) |>
+    rename(`Emissions|CO2|Land|+|Indirect` = .data$GCB) |>
     mutate(`Emissions|CO2|Land|+|Indirect` = .data$`Emissions|CO2|Land|+|Indirect` * -1) # as negative emissions
 
   slandOut <- magclass::as.magpie(sland)
