@@ -9,7 +9,7 @@ all bookkeeping models"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mrvalidation</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.69.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.70.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,6 +55,40 @@ all bookkeeping models</p>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>a MAgPIE object</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>The historical series pooled under <code>Emissions|CO2|Land|+|Land-use Change</code> are all LUC-scale CO2
+SOURCES and are broadly comparable to MAgPIE's <code>+|Land-use Change</code>. Verified against the ingested
+validation data (not the parent publications), they form a single positive cloud (Mt CO2/yr, World,
+2000-2010): bookkeeping BLUE/OSCAR/GCB/H&amp;C ~2600-6600 and the national-statistics series
+FAO_EmisLUC/EDGAR_LU/PRIMAPhist ~2800-5400 - the latter numerically indistinguishable from the
+bookkeeping cloud. They differ mainly on PEAT; a second, conceptual axis (INDIRECT/Grassi) matters in
+principle but is NOT represented in the ingested data (see Axis 2):</p><table class="table table"><tr><td><strong>source</strong></td><td><strong>peat</strong></td><td><strong>nature (as ingested)</strong></td></tr><tr><td>BLUE, OSCAR, H&amp;C2023</td><td>excl</td><td>bookkeeping ELUC (direct, ex-peat)</td></tr><tr><td>GCB (this fn)</td><td>excl</td><td>= mean(BLUE, OSCAR, H&amp;C2023)</td></tr><tr><td>Gasser et al 2020</td><td>excl</td><td>OSCAR bookkeeping</td></tr><tr><td>FAO_EmisLUC</td><td>incl</td><td>FAOSTAT net LULUCF ("Land Use total"), a source</td></tr><tr><td>EDGAR_LU</td><td>incl</td><td>EDGAR LULUCF CO2, a source</td></tr><tr><td>PRIMAPhist</td><td>incl</td><td>PRIMAP-hist CAT5 (LUCF) CO2, a source</td></tr></table><p>Axis 1 - PEAT. Bookkeeping estimates exclude peat drainage/fire; the national-statistics series include
+it (drained organic soils). MAgPIE's Land-use Change INCLUDES peat (separable via its <code>+|Peatland</code>
+child), so the peat-clean bookkeeping comparison uses Land-use Change net of that peat child (magpie4's
+<code>...|Land-use Change|Excl Peatland</code> line, where present, provides this directly). The peat term
+(~1-1.5 Gt CO2/yr) is small relative to the source magnitude and does not move the inventories out of
+the LUC cloud.</p>
+<p>Axis 2 - INDIRECT (Grassi) - NOT represented in the ingested data. In principle the bookkeeping-vs-NGHGI
+gap (~5 Gt CO2/yr; Grassi et al. 2021, doi:10.1038/s41558-021-01033-6) arises because country inventories,
+reporting the sink-inclusive NET LULUCF over a large managed-land area, embed the environmental sink and
+sit far BELOW bookkeeping ELUC - which would make net <code>Emissions|CO2|Land</code> the matching counterpart.
+BUT none of the FAO_EmisLUC/EDGAR_LU/PRIMAPhist series ingested here is that Grassi-adjusted NGHGI net:
+FAO is FAOSTAT's net "Land Use total" (its forest sink included but modest, so still a ~4 Gt SOURCE),
+EDGAR/PRIMAP are LULUCF CO2 series - all positive, LUC-scale, none carrying a net-flux or Indirect sink
+series. They must therefore be compared to MAgPIE's <code>+|Land-use Change</code> like the bookkeeping sources,
+NOT to net Land. The sink-inclusive NGHGI-net quantity Grassi contrasts with bookkeeping is absent from
+this validation cloud, so MAgPIE's own <code>+|Indirect</code> (its Grassi managed-land sink ~-5.6 Gt CO2/yr,
+<code>i52_land_carbon_sink</code>) has no inventory counterpart here to validate against.</p>
+<p>GCB note - the GCB column ingested here is the bookkeeping-model MEAN and is EX-peat: GCB ==
+mean(BLUE, OSCAR, H&amp;C2023) exactly (World 2020: 4298 == mean(5607, 4724, 2564)). The published GCB
+ELUC additionally adds peat drainage/fire (a separate GCB.xlsx column) not folded into the ingested
+net. GCB's peat column exists in the workbook but is intentionally not ingested (it could not be an
+additive child of Land-use Change, since GCB's net excludes it).</p>
+<p>Do NOT benchmark net Land against GCB: the only Indirect / net <code>Emissions|CO2|Land</code> series here is
+GCB's, where Indirect = the GCB terrestrial sink S_LAND over ALL land (World 2020: -11403 Mt CO2/yr,
+~the whole-biosphere sink), NOT the managed-land Grassi quantity MAgPIE reports.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
