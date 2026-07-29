@@ -22,6 +22,13 @@ calcValidEmissionsAFOLU <- function(datasource = "FAO", cumulative = FALSE) {
     return(x)
   }
 
+  # NB on the CO2 land-use-change component below: FAO_EmisLUC and EDGAR_LU are national-statistics /
+  # inventory LULUCF series. As ingested they are positive LUC-scale SOURCES (~2800-5400 Mt CO2/yr): FAO is
+  # FAOSTAT's net "Land Use total" (forest sink included but modest, still a source), EDGAR is LULUCF CO2 -
+  # neither carries a net-flux or Indirect sink series. They therefore sit in the same LUC-source cloud as
+  # the bookkeeping ELUC estimates and compare to MAgPIE's Emissions|CO2|Land|+|Land-use Change, NOT to net
+  # Emissions|CO2|Land. (They are incl-peat - drained organic soils - but that term is small relative to the
+  # source.) See calcValidGlobalCarbonBudget (@details) for the full peat/indirect scope of the LUC-CO2 cloud.
   if (datasource == "FAO") {
     #  FAO agricultural emissions (inclusive of the burning of crop residues)
     faoAg <- calcOutput("ValidEmissions", datasource = "FAO_EmisAg", aggregate = FALSE, warnNA = FALSE)
