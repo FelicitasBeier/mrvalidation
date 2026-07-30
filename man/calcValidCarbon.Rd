@@ -4,9 +4,7 @@
 \alias{calcValidCarbon}
 \title{calcValidCarbon}
 \usage{
-calcValidCarbon(
-  datasource = "LPJmL4_for_MAgPIE_44ac93de:GSWP3-W5E5:historical"
-)
+calcValidCarbon(datasource = "LPJmL5:GSWP3-W5E5:historical")
 }
 \arguments{
 \item{datasource}{Datasources for validation data}

@@ -107,19 +107,32 @@ calcValidGridSOCStocks <- function(datasource = "LPJ_IPCC2006", baseyear = 1995,
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")
     out <- add_dimension(out, dim = 3.2, add = "model", nm = datasource)
 
-  } else if (grepl("LPJmL4", datasource)) {
+  } else if (grepl("LPJmL5", datasource)) {
+    # extract default arguments for LPJmL
+    cfg <- toolLPJmLDefault()
+    # extract user arguments
     ds <- toolSplitSubtype(datasource,
                            list(version = NULL,
                                 climatemodel = NULL,
                                 scenario = NULL))
 
-    lpjml4soilc <- calcOutput("LPJmL_new", version = ds$version,
+    lpjml5soilc <- calcOutput("LPJmLTransform",
+                              lpjmlversion = cfg$defaultLPJmLVersion,
                               climatetype = paste(ds$climatemodel, ds$scenario, sep = ":"),
-                              subtype = "soilc_layer", stage = "raw", aggregate = FALSE)
-    lpjml4litc <- calcOutput("LPJmL_new", version = ds$version,
+                              subtype     = "pnv:soilc_layer", subdata = NULL,
+                              stage       = "raw",
+                              monthly     = FALSE,
+                              aggregate   = FALSE)
+
+    lpjml5litc <- calcOutput("LPJmLTransform",
+                             lpjmlversion = cfg$defaultLPJmLVersion,
                              climatetype = paste(ds$climatemodel, ds$scenario, sep = ":"),
-                             subtype = "litc", stage = "raw", aggregate = FALSE)
-    out <- setNames(lpjml4soilc[, , "layer1"] + 1 / 3 * lpjml4soilc[, , "layer2"] + lpjml4litc,
+                             subtype     = "pnv:litc", subdata = NULL,
+                             stage       = "raw",
+                             monthly     = FALSE,
+                             aggregate   = FALSE)
+
+    out <- setNames(lpjml5soilc[, , "layer1"] + 1 / 3 * lpjml5soilc[, , "layer2"] + lpjml5litc,
                     "Resources|Soil Carbon|Actual|Stock|SOC in top 30 cm (Mt C)")
 
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")

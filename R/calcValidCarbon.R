@@ -11,30 +11,68 @@
 #' calcOutput("ValidCarbon")
 #' }
 #'
-calcValidCarbon <- function(datasource = "LPJmL4_for_MAgPIE_44ac93de:GSWP3-W5E5:historical") {
+calcValidCarbon <- function(datasource = "LPJmL5:GSWP3-W5E5:historical") {
+  # extract default arguments for LPJmL
+  cfg <- toolLPJmLDefault()
 
-  if (datasource == "LPJmL4_for_MAgPIE_44ac93de:GSWP3-W5E5:historical") {
+  if (datasource == "LPJmL5:GSWP3-W5E5:historical") {
+    # select chosen climatetype
+    climatetype <- gsub("^(.[^:]*):(.*)", "\\2", datasource)
 
-    soilc <- calcOutput("LPJmL_new", version = "LPJmL4_for_MAgPIE_44ac93de",
-                        climatetype = "GSWP3-W5E5:historical", stage = "raw", subtype = "soilc", aggregate = FALSE)
-    litc  <- calcOutput("LPJmL_new", version = "LPJmL4_for_MAgPIE_44ac93de",
-                        climatetype = "GSWP3-W5E5:historical", stage = "raw", subtype = "litc",  aggregate = FALSE)
-    vegc  <- calcOutput("LPJmL_new", version = "LPJmL4_for_MAgPIE_44ac93de",
-                        climatetype = "GSWP3-W5E5:historical", stage = "raw", subtype = "vegc",  aggregate = FALSE)
+    soilc <- calcOutput("LPJmLTransform",
+                        lpjmlversion = cfg$defaultLPJmLVersion,
+                        climatetype = climatetype,
+                        subtype     = "pnv:soilc", subdata = NULL,
+                        stage       = "raw",
+                        monthly     = FALSE,
+                        aggregate   = FALSE)
+
+    litc <- calcOutput("LPJmLTransform",
+                       lpjmlversion = cfg$defaultLPJmLVersion,
+                       climatetype = climatetype,
+                       subtype     = "pnv:litc", subdata = NULL,
+                       stage       = "raw",
+                       monthly     = FALSE,
+                       aggregate   = FALSE)
+
+    vegc <- calcOutput("LPJmLTransform",
+                       lpjmlversion = cfg$defaultLPJmLVersion,
+                       climatetype = cfg$baselineHist,
+                       subtype     = "pnv:vegc", subdata = NULL,
+                       stage       = "raw",
+                       monthly     = FALSE,
+                       aggregate   = FALSE)
 
     nm <- "historical"
 
-  } else if (grepl("LPJmL4", datasource) && !grepl("GSWP3-W5E5", datasource)) {
-
-    version     <- gsub("^(.[^:]*):(.*)", "\\1", datasource)
+  } else if (grepl("LPJmL5", datasource) && !grepl("GSWP3-W5E5", datasource)) {
+    # select climatetype
     climatetype <- gsub("^(.[^:]*):(.*)", "\\2", datasource)
 
-    soilc <- calcOutput("LPJmL_new", version = version, climatetype = climatetype,
-                        subtype = "soilc", stage = "raw", aggregate = FALSE)
-    litc  <- calcOutput("LPJmL_new", version = version, climatetype = climatetype,
-                        subtype = "litc",  stage = "raw", aggregate = FALSE)
-    vegc  <- calcOutput("LPJmL_new", version = version, climatetype = climatetype,
-                        subtype = "vegc",  stage = "raw", aggregate = FALSE)
+    soilc <- calcOutput("LPJmLTransform",
+                        lpjmlversion = cfg$defaultLPJmLVersion,
+                        climatetype = climatetype,
+                        subtype     = "pnv:soilc", subdata = NULL,
+                        stage       = "raw",
+                        monthly     = FALSE,
+                        aggregate   = FALSE)
+
+    litc <- calcOutput("LPJmLTransform",
+                       lpjmlversion = cfg$defaultLPJmLVersion,
+                       climatetype = climatetype,
+                       subtype     = "pnv:litc", subdata = NULL,
+                       stage       = "raw",
+                       monthly     = FALSE,
+                       aggregate   = FALSE)
+
+    vegc <- calcOutput("LPJmLTransform",
+                       lpjmlversion = cfg$defaultLPJmLVersion,
+                       climatetype = climatetype,
+                       subtype     = "pnv:vegc", subdata = NULL,
+                       stage       = "raw",
+                       monthly     = FALSE,
+                       aggregate   = FALSE)
+
 
     nm <- "projection"
 
