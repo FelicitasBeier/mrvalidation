@@ -37,12 +37,14 @@ calcValidTauPastr <- function() {
   yact[is.nan(yact) | is.infinite(yact)] <- 0
 
   # reference yields
-  yref <- calcOutput("GrasslandsYields",
-                     lpjml = "lpjml5p2_pasture",
-                     climatetype = "MRI-ESM2-0:ssp245",
-                     subtype = "/co2/Nreturn0p5", # nolint: absolute_path_linter.
-                     lsu_levels = c(seq(0, 2.2, 0.2), 2.5), past_mngmt = "mdef",
-                     aggregate = FALSE)[, past, "pastr.rainfed"]
+  cfg <- toolLPJmLDefault(suppressNote = TRUE)
+  yref <- calcOutput("YieldsLPJmL", lpjml = cfg$defaultLPJmLVersion,
+                     climatetype = cfg$baselineHist,
+                     selectyears = past,
+                     multicropping = FALSE,
+                     supplementary = TRUE,
+                     aggregate = FALSE)[, , "grassland.rainfed"]
+  yref <- collapseNames(yref)
 
   yrefWeights <- calcOutput("LUH3", landuseTypes = "LUH3", cellular = TRUE,
                             aggregate = FALSE)[, past, "pastr"]

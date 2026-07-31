@@ -316,12 +316,11 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
   }
 
   calcOutput(type = "ValidBEYield", aggregate = aggregate, file = valfile,
-                   append = TRUE, try = TRUE)
+             append = TRUE, try = TRUE)
 
   # Productivity
   calcOutput(type = "ValidTau", aggregate = aggregate, file = valfile, append = TRUE, try = TRUE)
   calcOutput(type = "ValidTauPastr", aggregate = aggregate, file = valfile, append = TRUE, try = TRUE)
-  calcOutput(type = "ValidLSUdensity", aggregate = aggregate, file = valfile, append = TRUE, try = TRUE)
   calcOutput(type = "ValidAgriResearchIntensity", aggregate = aggregate, datasource = "Pardey",
              file = valfile, append = TRUE, try = TRUE)
   calcOutput(type = "ValidFeedConversion", aggregate = aggregate,
