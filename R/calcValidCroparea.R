@@ -32,6 +32,8 @@ calcValidCroparea <- function(datasource = "FAO", detail = FALSE) {
     out <- add_dimension(out, dim = 3.2, add = "model", nm = datasource)
 
   } else if (datasource == "ostberg2023") {
+    # read in uncorrected/raw data from LandInG toolbox by Sebastian Ostberg
+    # based on FAO-LUH2v2
     data <- calcOutput("CropareaLandInG", aggregate = FALSE)
     croparea <- reporthelper(x = data, dim = 3.1,
                              level_zero_name = "Resources|Land Cover|Cropland|Croparea",

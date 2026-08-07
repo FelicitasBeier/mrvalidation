@@ -2,7 +2,7 @@ Type: Package
 Package: mrvalidation
 Title: madrat data preparation for validation purposes
 Version: 2.70.0
-Date: 2026-08-06
+Date: 2026-08-07
 Authors@R: c(
     person("Benjamin Leon", "Bodirsky", , "bodirsky@pik-potsdam.de", role = c("aut", "cre")),
     person("Stephen", "Wirth", role = "aut"),

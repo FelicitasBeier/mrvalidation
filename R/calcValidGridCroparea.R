@@ -23,7 +23,8 @@ calcValidGridCroparea <- function(physical = TRUE) {
     descName <- "harvested area"
   }
 
-  out <- calcOutput("Croparea", cellular = TRUE, aggregate = FALSE, physical = physical, irrigation = TRUE)
+  out <- calcOutput("Croparea", cellular = TRUE, aggregate = FALSE,
+                    physical = physical, irrigation = TRUE)
   getNames(out, dim = 1) <- reportingnames(getNames(out, dim = 1))
   getNames(out, dim = 2) <- reportingnames(getNames(out, dim = 2))
   out <- clean_magpie(out)

@@ -28,7 +28,8 @@
 #' @importFrom magclass getNames<- as.magpie
 #' @importFrom magpiesets reporthelper summationhelper findset
 
-calcValidYield  <-  function(datasource = "FAO", faoVersion = "join2010", future = NULL, physical = TRUE) {
+calcValidYield  <-  function(datasource = "FAO", faoVersion = "join2010",
+                             future = NULL, physical = TRUE) {
 
   if (physical) {
     indicatorName <- "Productivity|Yield"
@@ -120,89 +121,6 @@ calcValidYield  <-  function(datasource = "FAO", faoVersion = "join2010", future
 
     scenario    <- "historical"
     description <- paste("FAO massbalance production divided by", descName, " from FAO.")
-
-  } else if (datasource == "Ostberg2023_FAO_LUH2v2") {
-
-    if (!is.null(future)) stop("Future options is not available for source type 'FAO'.")
-
-    # Calculate areas of individual crops and pasture
-    croparea <- calcOutput("CropareaLandInG", aggregate = FALSE, physical = physical)
-    pastarea  <-  setNames(calcOutput("LanduseInitialisation", aggregate = FALSE)[, , "past"],
-                           "pasture")
-
-    cyears <- intersect(getYears(croparea), getYears(pastarea))
-    area <- mbind(croparea[, cyears, ], pastarea[, cyears, ])
-    area <- summationhelper(reporthelper(area,
-                                         level_zero_name = indicatorName),
-                            sep = NULL)
-
-    # Calculate production
-    if (faoVersion == "join2010") {
-      histproduction <- collapseNames(calcOutput("FAOmassbalance", aggregate = FALSE))
-    } else if (faoVersion == "FAOpre2010") {
-      histproduction <- collapseNames(calcOutput("FAOmassbalance", version = "pre2010", aggregate = FALSE))
-    } else if (faoVersion == "FAOpost2010") {
-      histproduction <- collapseNames(calcOutput("FAOmassbalance", version = "post2010", aggregate = FALSE))
-    }
-
-    # extract DryMatter(dm) from production data
-    # Extract Production from subsetted production data containing only DryMatter(dm)
-    histproduction  <-  collapseNames(histproduction[, , "dm"][, , "production"])
-
-    # Figure out which commodities are common and make sure that production and area has same commodity names
-    kcr <- findset("kcr")
-    cropproduction  <-  histproduction[, , kcr]
-    pastproduction  <-  histproduction[, , "pasture"]
-    production <- mbind(cropproduction, pastproduction)
-
-    # Calculate Yields
-    production <- summationhelper(reporthelper(production,
-                                               level_zero_name = indicatorName),
-                                  sep = NULL)
-    cyears <- intersect(getYears(production), getYears(area))
-    yield <- production[, cyears, ] / area[, cyears, ]
-
-    # Check for NaN values
-    indexNaN  <-  which(is.nan(yield))
-    # Change NaN to 0
-    yield[is.nan(yield)] <- 0
-    if (length(indexNaN) > 0) {
-      vcat(verbosity = 2, "NaN values were found in the calculated yields ---> NaN values set to 0")
-    } else if (length(indexNaN) == 0) {
-      vcat(verbosity = 2, paste0("No NaN values detected in calculated yields. ",
-                                 "Yields for area reported as 0 are converted to 0."))
-    }
-
-    # Check for infinite values - Production reported but on 0 area
-    infindex  <-  which(is.infinite(yield)) # Lots of inf values. Being too diplomatic FAO aren't we!!
-    # Change inf to 0
-    yield[is.infinite(yield)] <- 0
-    if (length(infindex) > 0) {
-      vcat(verbosity = 2, "inf values were found in the calculated yields ---> inf values set to 0")
-    } else if (length(infindex) == 0) {
-      vcat(verbosity = 2, "No inf values found in the calculated yields")
-    }
-
-    ## Additional checks required because we are reporting insanely high yields
-    ## Check which(yield>200,arr.ind = TRUE)
-    ## looks like Vatican are the best producers of oil
-
-    ## We decided to set these outliers to 0
-    # look for the Region names which are outliers
-    region   <- rownames(which(yield > 200, arr.ind = TRUE))
-    # look for the Years where reporting is flawed
-    year     <- which(yield > 200, arr.ind = TRUE)[, 2]
-    # look for the scenario.model.Variable where reporting is flawed
-    variable <- which(yield > 200, arr.ind = TRUE)[, 3]
-
-    ## Now do the operation of our magpie object
-    yield[region, year, variable]  <-  0
-    vcat(verbosity = 2, paste0("Yields>200 ton/ha were converted to 0 ",
-                               "when area and production values were ambiguous"))
-
-    scenario    <- "historical"
-    description <- paste("FAO massbalance production divided by", descName,
-                         " from Ostberg et al 2023 (excluding fallow land)")
 
   } else if (datasource == "calibratedLPJmL") {
 
