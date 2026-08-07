@@ -42,9 +42,10 @@ calcValidGridYields <- function(datasource = "downscaledFAO", future = NULL, phy
     withr::with_options(magclass_sizeLimit = 1e+12)
     withr::defer(withr::with_options(magclass_sizeLimit = sizelimit))
 
-    lpjml       <- "ggcmi_phase3_nchecks_bft_6277d36e"
+    cfg   <- toolLPJmLDefault(suppressNote = TRUE)
+    lpjml       <- cfg$defaultLPJmLVersion
+    climatetype <- cfg$baselineHist
     isimip      <- NULL
-    climatetype <- "GSWP3-W5E5:historical"
 
     if (!is.null(future)) {
 
