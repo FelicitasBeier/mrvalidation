@@ -21,8 +21,8 @@ calcValidCropareaDiversity <- function(index = "shannon", groupdiv = "agg1") {
   area <- collapseNames(area[, , "irrigated"]) + collapseNames(area[, , "rainfed"])
   fallow <- calcOutput("Fallow", aggregate = FALSE, cellular = TRUE)
   fallow <- setNames(fallow, "fallow")
-  combined_years <- intersect(getYears(fallow), getYears(area))
-  area <- mbind(area[, combined_years, ], fallow[, combined_years, ])
+  combinedYears <- intersect(getYears(fallow), getYears(area))
+  area <- mbind(area[, combinedYears, ], fallow[, combinedYears, ])
 
   land <- dimSums(area, dim = 3)
 
