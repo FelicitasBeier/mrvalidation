@@ -74,8 +74,8 @@ calcValidGridYields <- function(datasource = "downscaledFAO", future = NULL, phy
     refYear        <- "y2010"
 
     out <- calcOutput("YieldsCalibrated", source = c(lpjml = lpjml, isimip = isimip),
-                      climatetype = climatetype, refYear = refYear, cells = "magpiecell",
-                      multicropping = physical, aggregate = FALSE)[, , findset("kcr")]
+                      climatetype = climatetype, refYear = refYear, cells = "lpjcell",
+                      multicropping = FALSE, aggregate = FALSE)[, , findset("kcr")]
 
     getNames(out, dim = 1) <- reportingnames(getNames(out, dim = 1))
     getNames(out, dim = 2) <- reportingnames(getNames(out, dim = 2))
