@@ -150,7 +150,7 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
 
   # Resources:
   # Croparea
-  calcOutput(type = "ValidCroparea", datasource = "MadratLandingLUH", aggregate = aggregate,
+  calcOutput(type = "ValidCroparea", datasource = "MadratLandIngLUH", aggregate = aggregate,
              file = valfile, append = TRUE, detail = TRUE, try = TRUE) # ready
   calcOutput(type = "ValidCroparea", datasource = "ostberg2023", aggregate = aggregate,
              file = valfile, append = TRUE, detail = TRUE, try = TRUE) # ready
@@ -304,7 +304,7 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
              file = valfile, append = TRUE, try = TRUE) # ready
 
   # Yield
-  for (datasource in c("MadratLandingFAOLUH")) {
+  for (datasource in c("MadratLandIngFAOLUH")) {
     for (faoVersion in c("join2010", "FAOpre2010", "FAOpost2010")) {
       for (physical in c(TRUE, FALSE)) {
         calcOutput(type = "ValidYield", datasource = datasource, physical = physical,
