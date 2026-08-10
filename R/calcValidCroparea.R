@@ -7,7 +7,7 @@
 #' Ostberg2023 is a slightly modified version of
 #' https://gmd.copernicus.org/articles/16/3375/2023/gmd-16-3375-2023-assets.html
 #'
-#' @param datasource "MadratLandIngLUH": croparea as returned by calcCroparea, i.e.
+#' @param datasource "MadratLandInGLUH": croparea as returned by calcCroparea, i.e.
 #'                                       LandInG harmonised against LUH and calibrated
 #'                                       to LanduseInitialisation cropland
 #'                   "ostberg2023": croparea according to LandInG data harmonization
@@ -21,9 +21,9 @@
 #' @importFrom magclass getNames
 #'
 
-calcValidCroparea <- function(datasource = "MadratLandIngLUH", detail = FALSE) {
+calcValidCroparea <- function(datasource = "MadratLandInGLUH", detail = FALSE) {
 
-  if (datasource == "MadratLandIngLUH") {
+  if (datasource == "MadratLandInGLUH") {
     data <- calcOutput("Croparea", sectoral = "kcr", physical = TRUE, aggregate = FALSE)
     out <- reporthelper(x = data, dim = 3.1,
                         level_zero_name = "Resources|Land Cover|Cropland|Croparea",

@@ -7,7 +7,7 @@
 #' Returns yield as calculated from area area and production.
 #'
 #' @param datasource Specify which datasource needs to be used.
-#'                   Currently only "MadratLandIngFAOLUH" and "calibratedLPJmL" is available.
+#'                   Currently only "MadratLandInGFAOLUH" and "calibratedLPJmL" is available.
 #' @param future     if NULL no future values are returned (default).
 #'                   specify climate scenario (gcm:rcp), if future is needed
 #' @param physical if true (default) physical area (croparea) used for yield calculation;
@@ -28,7 +28,7 @@
 #' @importFrom magclass getNames<- as.magpie
 #' @importFrom magpiesets reporthelper summationhelper findset
 
-calcValidYield  <-  function(datasource = "MadratLandIngFAOLUH", faoVersion = "join2010",
+calcValidYield  <-  function(datasource = "MadratLandInGFAOLUH", faoVersion = "join2010",
                              future = NULL, physical = TRUE) {
 
   if (physical) {
@@ -39,9 +39,9 @@ calcValidYield  <-  function(datasource = "MadratLandIngFAOLUH", faoVersion = "j
     descName <- "harvested area"
   }
 
-  if (datasource == "MadratLandIngFAOLUH") {
+  if (datasource == "MadratLandInGFAOLUH") {
 
-    if (!is.null(future)) stop("Future options is not available for source type 'FAO'.")
+    if (!is.null(future)) stop("Future options are not available for source type 'MadratLandInGFAOLUH'.")
 
     # Calculate areas of individual crops and pasture
     croparea  <-  collapseNames(calcOutput("Croparea", sectoral = "kcr",

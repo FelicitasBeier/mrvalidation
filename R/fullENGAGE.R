@@ -29,7 +29,7 @@ fullENGAGE <- function() {
   x <- convertENGAGE(x)
   out <- mbind(out, x)
 
-  x <- calcOutput(type = "ValidYield", datasource = "FAO", aggregate = "REG+GLO")
+  x <- calcOutput(type = "ValidYield", datasource = "MadratLandInGFAOLUH", aggregate = "REG+GLO")
   x <- convertENGAGE(x)
   out <- mbind(out, x)
 
