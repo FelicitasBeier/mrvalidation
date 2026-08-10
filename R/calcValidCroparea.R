@@ -21,7 +21,7 @@
 #' @importFrom magclass getNames
 #'
 
-calcValidCroparea <- function(datasource = "FAO", detail = FALSE) {
+calcValidCroparea <- function(datasource = "MadratLandingLUH", detail = FALSE) {
 
   if (datasource == "MadratLandingLUH") {
     data <- calcOutput("Croparea", sectoral = "kcr", physical = TRUE, aggregate = FALSE)
