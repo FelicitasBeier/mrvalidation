@@ -20,7 +20,7 @@
 
 calcValidCroparea <- function(datasource = "FAO", detail = FALSE) {
 
-  if (datasource == "FAO") {
+  if (datasource == "MadratLandingLUH") {
     data <- calcOutput("Croparea", sectoral = "kcr", physical = TRUE, aggregate = FALSE)
     out <- reporthelper(x = data, dim = 3.1,
                         level_zero_name = "Resources|Land Cover|Cropland|Croparea",

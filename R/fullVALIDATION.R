@@ -150,7 +150,7 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
 
   # Resources:
   # Croparea
-  calcOutput(type = "ValidCroparea", datasource = "FAO", aggregate = aggregate,
+  calcOutput(type = "ValidCroparea", datasource = "MadratLandingLUH", aggregate = aggregate,
              file = valfile, append = TRUE, detail = TRUE, try = TRUE) # ready
   calcOutput(type = "ValidCroparea", datasource = "ostberg2023", aggregate = aggregate,
              file = valfile, append = TRUE, detail = TRUE, try = TRUE) # ready
