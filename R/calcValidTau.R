@@ -2,9 +2,10 @@
 #'
 #' @description Returns historical land use intensity estimates (tau).
 #'
-#' @param datasource Currently available: \code{"FAO2012"} (original data set)
-#' and \code{"FAOonline"} (projection of tau values from 1995 based on recent FAO yield
-#' projections.)
+#' @param datasource Currently available: \code{"FAO2012"} (original data set),
+#' \code{"FAOonline"} (projection of tau values from 1995 based on recent FAO yield
+#' projections) and \code{"MadratLandInGFAOLUH"} (projection from 1995 based on the
+#' calcValidYield series, i.e. FAO production over LandInG croparea).
 #' @return tau time series
 #' @author Jan Philipp Dietrich
 
@@ -44,7 +45,7 @@ calcValidTau <- function(datasource = "FAO2012") {
     out <- tauHist
     description <- "Historic Trends in Agricultural Land Use Intensity Tau based on FAO yield trends (updated)"
     sourceName <- "dietrich_et_al_2012_updated"
-  } else if (datasource == "FAOValidYields") {
+  } else if (datasource == "MadratLandInGFAOLUH") {
     # the model name is stamped onto the series by calcValidYield, so ask for the
     # datasource explicitly and build the subscript from the same string
     yieldSource <- "MadratLandInGFAOLUH"
@@ -63,8 +64,9 @@ calcValidTau <- function(datasource = "FAO2012") {
     weight[is.na(tauHist)] <- 0
     tauHist[is.na(tauHist)] <- 0
     out <- tauHist
-    description <- "Trends in Agricultural Land Use Intensity Tau based on FAO yield trends from calcValidYield"
-    sourceName <- "yield validation FAO"
+    description <- paste("Trends in Agricultural Land Use Intensity Tau based on the",
+                         "calcValidYield series, i.e. FAO production over LandInG croparea")
+    sourceName <- "yield validation MadratLandInGFAOLUH"
   } else {
     stop("Unknown datasource chosen in calcValidTau!")
   }
