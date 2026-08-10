@@ -5,7 +5,7 @@
 \title{calcValidYield}
 \usage{
 calcValidYield(
-  datasource = "FAO",
+  datasource = "MadratLandInGFAOLUH",
   faoVersion = "join2010",
   future = NULL,
   physical = TRUE
@@ -13,7 +13,7 @@ calcValidYield(
 }
 \arguments{
 \item{datasource}{Specify which datasource needs to be used.
-Currently only "FAO" and "calibratedLPJmL" is available.}
+Currently only "MadratLandInGFAOLUH" and "calibratedLPJmL" is available.}
 
 \item{faoVersion}{which FAO version to use (pre, post or joined 2010 data)}
 

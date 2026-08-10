@@ -4,13 +4,15 @@
 \alias{calcValidCroparea}
 \title{calcValidCroparea}
 \usage{
-calcValidCroparea(datasource = "FAO", detail = FALSE)
+calcValidCroparea(datasource = "MadratLandInGLUH", detail = FALSE)
 }
 \arguments{
-\item{datasource}{"FAO": croparea according to FAOSTAT,
+\item{datasource}{"MadratLandInGLUH": croparea as returned by calcCroparea, i.e.
+                    LandInG harmonised against LUH and calibrated
+                    to LanduseInitialisation cropland
 "ostberg2023": croparea according to LandInG data harmonization
-               by Ostberg et al. (2023)
- "FAOfallow": fallow land according to FAOSTAT}
+               by Ostberg et al. (2023), uncorrected
+"FAOfallow": fallow land according to FAOSTAT}
 
 \item{detail}{TRUE: data provided for different crop types, FALSE: aggregated data}
 }
@@ -18,9 +20,10 @@ calcValidCroparea(datasource = "FAO", detail = FALSE)
 magpie object
 }
 \description{
-Returns historical areas of individual crops. These are derived by
-correcting harvested areas to match to physical cropland areas. Both these
-datasets are from FAO. Output is meant to be used for model validation.
+Returns historical areas of individual crops, meant to be used for
+model validation. The default source is the madrat croparea preprocessing, which
+harmonises LandInG against LUH and calibrates it to LanduseInitialisation cropland;
+it is no longer FAOSTAT, so the series is labelled accordingly rather than as "FAO".
 Ostberg2023 is a slightly modified version of
 https://gmd.copernicus.org/articles/16/3375/2023/gmd-16-3375-2023-assets.html
 }

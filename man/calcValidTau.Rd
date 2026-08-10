@@ -7,9 +7,10 @@
 calcValidTau(datasource = "FAO2012")
 }
 \arguments{
-\item{datasource}{Currently available: \code{"FAO2012"} (original data set)
-and \code{"FAOonline"} (projection of tau values from 1995 based on recent FAO yield
-projections.)}
+\item{datasource}{Currently available: \code{"FAO2012"} (original data set),
+\code{"FAOonline"} (projection of tau values from 1995 based on recent FAO yield
+projections) and \code{"MadratLandInGFAOLUH"} (projection from 1995 based on the
+calcValidYield series, i.e. FAO production over LandInG croparea).}
 }
 \value{
 tau time series
