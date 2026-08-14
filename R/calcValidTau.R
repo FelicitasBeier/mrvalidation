@@ -45,7 +45,8 @@ calcValidTau <- function(datasource = "FAO2012") {
     description <- "Historic Trends in Agricultural Land Use Intensity Tau based on FAO yield trends (updated)"
     sourceName <- "dietrich_et_al_2012_updated"
   } else if (datasource == "FAOValidYields") {
-    cropYields <- calcOutput("ValidYield", aggregate = FALSE)[, , "historical.FAO.Productivity|Yield|+|Crops (t DM/ha)"]
+    cropYields <- calcOutput("ValidYield", aggregate = FALSE)[
+      , , "historical.FAO.Productivity|Yields|Yield by physical area|+|Crops (t DM/ha)"]
     yieldIndex <- collapseDim(cropYields / cropYields[, 1995, ])
 
     # average growth rates of more than 20% per year are assumed to be incorrect
