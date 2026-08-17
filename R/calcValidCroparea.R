@@ -7,9 +7,10 @@
 #' Ostberg2023 is a slightly modified version of
 #' https://gmd.copernicus.org/articles/16/3375/2023/gmd-16-3375-2023-assets.html
 #'
-#' @param datasource "MadratLandInGLUH": croparea as returned by calcCroparea, i.e.
-#'                                       LandInG harmonised against LUH and calibrated
-#'                                       to LanduseInitialisation cropland
+#' @param datasource "MadratLandInGLUH": cropland, croparea and fallow as returned by
+#'                                       calcCroparea (default datasource "LandInG"),
+#'                                       i.e. LandInG harmonised against LUH and
+#'                                       calibrated to LanduseInitialisation cropland
 #'                   "ostberg2023": croparea according to LandInG data harmonization
 #'                                  by Ostberg et al. (2023), uncorrected
 #'                   "FAOfallow": fallow land according to FAOSTAT
@@ -24,11 +25,28 @@
 calcValidCroparea <- function(datasource = "MadratLandInGLUH", detail = FALSE) {
 
   if (datasource == "MadratLandInGLUH") {
-    data <- calcOutput("Croparea", sectoral = "kcr", physical = TRUE, aggregate = FALSE)
-    out <- reporthelper(x = data, dim = 3.1,
-                        level_zero_name = "Resources|Land Cover|Cropland|Croparea",
-                        detail = detail)
-    out <- summationhelper(out)
+    # cropland, croparea (by crop) and fallow from calcCroparea's default LandInG
+    # data source: LandInG harmonised against LUH and calibrated to
+    # LanduseInitialisation cropland
+    data <- calcOutput("Croparea", sectoral = "kcr", physical = TRUE, fallow = TRUE,
+                       cellular = FALSE, irrigation = FALSE, datasource = "LandInG",
+                       aggregate = FALSE)
+
+    fallow <- setNames(collapseNames(data[, , "fallow"]),
+                       paste("Resources|Land Cover|Cropland|+|",
+                             reportingnames("crop_fallow"), sep = ""))
+
+    cropareaByCrop <- data[, , "fallow", invert = TRUE]
+    croparea <- reporthelper(x = cropareaByCrop, dim = 3.1,
+                             level_zero_name = "Resources|Land Cover|Cropland|Croparea",
+                             detail = detail)
+    croparea <- summationhelper(croparea, sep = "+")
+
+    cropland <- setNames(dimSums(data, dim = 3.1), "Resources|Land Cover|+|Cropland")
+    cropareatotal <- setNames(dimSums(cropareaByCrop, dim = 3.1),
+                              "Resources|Land Cover|Cropland|+|Croparea")
+
+    out <- mbind(cropland, cropareatotal, fallow, croparea)
     getNames(out) <- paste(getNames(out), "(million ha)", sep = " ")
 
     out <- add_dimension(out, dim = 3.1, add = "scenario", nm = "historical")

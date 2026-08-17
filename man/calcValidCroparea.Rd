@@ -7,9 +7,10 @@
 calcValidCroparea(datasource = "MadratLandInGLUH", detail = FALSE)
 }
 \arguments{
-\item{datasource}{"MadratLandInGLUH": croparea as returned by calcCroparea, i.e.
-                    LandInG harmonised against LUH and calibrated
-                    to LanduseInitialisation cropland
+\item{datasource}{"MadratLandInGLUH": cropland, croparea and fallow as returned by
+                    calcCroparea (default datasource "LandInG"),
+                    i.e. LandInG harmonised against LUH and
+                    calibrated to LanduseInitialisation cropland
 "ostberg2023": croparea according to LandInG data harmonization
                by Ostberg et al. (2023), uncorrected
 "FAOfallow": fallow land according to FAOSTAT}
