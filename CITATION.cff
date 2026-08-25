@@ -3,7 +3,7 @@ message: If you use this software, please cite it using the metadata from this f
 type: software
 title: 'mrvalidation: madrat data preparation for validation purposes'
 version: 2.71.0
-date-released: '2026-08-10'
+date-released: '2026-08-14'
 abstract: Package contains routines to prepare data for validation exercises.
 authors:
 - family-names: Bodirsky
