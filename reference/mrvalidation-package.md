@@ -18,8 +18,6 @@ Useful links:
 
 Authors:
 
-- Benjamin Leon Bodirsky <bodirsky@pik-potsdam.de>
-
 - Stephen Wirth
 
 - Kristine Karstens
