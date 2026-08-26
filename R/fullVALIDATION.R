@@ -248,7 +248,8 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
   calcOutput("ValidResidues", aggregate = aggregate, file = valfile, append = TRUE, try = TRUE)
 
   # Carbon Stocks
-  calcOutput("ValidCarbon", datasource = "LPJmL4_for_MAgPIE_44ac93de:GSWP3-W5E5:historical", aggregate = aggregate,
+  calcOutput("ValidCarbon", datasource = "LPJmL5:GSWP3-W5E5:historical",
+             aggregate = aggregate,
              file = valfile, append = TRUE, try = TRUE)
 
   # Growing Stocks
