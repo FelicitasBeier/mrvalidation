@@ -32,10 +32,10 @@
 calcValidYield  <-  function(datasource = "FAO", faoVersion = "join2010", future = NULL, physical = TRUE) {
 
   if (physical) {
-    indicatorName <- "Productivity|Yield"
+    indicatorName <- "Productivity|Yields|Yield by physical area"
     descName <- "physical area"
   } else {
-    indicatorName <- "Productivity|Yield by harvested area"
+    indicatorName <- "Productivity|Yields|Yield by harvested area"
     descName <- "harvested area"
   }
 
