@@ -1,6 +1,6 @@
 # madrat data preparation for validation purposes
 
-R package **mrvalidation**, version **2.71.0**
+R package **mrvalidation**, version **2.72.1**
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4317826.svg)](https://doi.org/10.5281/zenodo.4317826)
 [![R build
@@ -53,7 +53,7 @@ Biewald A, Weindl I, Beier F, Chen D, Crawford M, Leip D, Molina Bacca
 E, Kreidenweis U, W. Yalew A, von Jeetze P, Wang X, Dietrich J, Alves M
 (2026). “mrvalidation: madrat data preparation for validation purposes.”
 <doi:10.5281/zenodo.4317826> <https://doi.org/10.5281/zenodo.4317826>,
-Version: 2.71.0, <https://github.com/pik-piam/mrvalidation>.
+Version: 2.72.1, <https://github.com/pik-piam/mrvalidation>.
 
 A BibTeX entry for LaTeX users is
 
@@ -62,10 +62,10 @@ A BibTeX entry for LaTeX users is
  title = {mrvalidation: madrat data preparation for validation purposes},
  author = {Benjamin Leon Bodirsky and Stephen Wirth and Kristine Karstens and Florian Humpenoeder and Mishko Stevanovic and Abhijeet Mishra and Anne Biewald and Isabelle Weindl and Felicitas Beier and David Chen and Michael Crawford and Debbora Leip and Edna {Molina Bacca} and Ulrich Kreidenweis and Amsalu {W. Yalew} and Patrick {von Jeetze} and Xiaoxi Wang and Jan Philipp Dietrich and Marcos Alves},
  doi = {10.5281/zenodo.4317826},
- date = {2026-08-14},
+ date = {2026-09-10},
  year = {2026},
  url = {https://github.com/pik-piam/mrvalidation},
- note = {Version: 2.71.0},
+ note = {Version: 2.72.1},
 }
 ```
 
@@ -131,6 +131,8 @@ A BibTeX entry for LaTeX users is
   calcValidFoodExpenditure
 - [`calcValidFoodExpenditureShare()`](calcValidFoodExpenditureShare.md)
   : calcValidFoodExpenditureShare
+- [`calcValidGCBcountry()`](calcValidGCBcountry.md) :
+  calcValidGCBcountry
 - [`calcValidGS()`](calcValidGS.md) : calcValidGS
 - [`calcValidGini()`](calcValidGini.md) : calcValidGini
 - [`calcValidGlobalCarbonBudget()`](calcValidGlobalCarbonBudget.md) :
@@ -229,6 +231,7 @@ A BibTeX entry for LaTeX users is
 - [`calcValidWaterUsage()`](calcValidWaterUsage.md) :
   calcValidWaterUsage
 - [`calcValidYield()`](calcValidYield.md) : calcValidYield
+- [`convertGCBcountry()`](convertGCBcountry.md) : convertGCBcountry
 - [`convertGMIA()`](convertGMIA.md) : convertGMIA
 - [`convertGasser()`](convertGasser.md) : convertGasser
 - [`convertHID()`](convertHID.md) : convertHID
@@ -236,6 +239,7 @@ A BibTeX entry for LaTeX users is
   convertIMPACTIrrigInvCosts
 - [`convertPardeyAgRD()`](convertPardeyAgRD.md) : convertPardeyAgRD
 - [`convertWaterUsage()`](convertWaterUsage.md) : convertWaterUsage
+- [`correctGCBcountry()`](correctGCBcountry.md) : correctGCBcountry
 - [`correctGMIA()`](correctGMIA.md) : correctGMIA
 - [`correctHID()`](correctHID.md) : correctHID
 - [`correctSoilCarbonDebt()`](correctSoilCarbonDebt.md) :
@@ -243,6 +247,7 @@ A BibTeX entry for LaTeX users is
 - [`downloadAR6SPMFig1()`](downloadAR6SPMFig1.md) : downloadAR6SPMFig1
 - [`downloadBII()`](downloadBII.md) : downloadBII
 - [`downloadCMIP6()`](downloadCMIP6.md) : downloadCMIP6
+- [`downloadGCBcountry()`](downloadGCBcountry.md) : downloadGCBcountry
 - [`downloadGlobalCarbonBudget()`](downloadGlobalCarbonBudget.md) :
   downloadGlobalCarbonBudget
 - [`downloadSoilCarbonDebt()`](downloadSoilCarbonDebt.md) :
@@ -260,6 +265,7 @@ A BibTeX entry for LaTeX users is
   readChenFoodPrices2025
 - [`readEmisLucGlo()`](readEmisLucGlo.md) : EmisLucGlo
 - [`readFAOrotation()`](readFAOrotation.md) : FAOrotation
+- [`readGCBcountry()`](readGCBcountry.md) : readGCBcountry
 - [`readGMIA()`](readGMIA.md) : readGMIA
 - [`readGSOC()`](readGSOC.md) : readGSOC
 - [`readGasser()`](readGasser.md) : Gasser

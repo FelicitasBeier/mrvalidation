@@ -60,6 +60,8 @@
   calcValidFoodExpenditure
 - [`calcValidFoodExpenditureShare()`](calcValidFoodExpenditureShare.md)
   : calcValidFoodExpenditureShare
+- [`calcValidGCBcountry()`](calcValidGCBcountry.md) :
+  calcValidGCBcountry
 - [`calcValidGS()`](calcValidGS.md) : calcValidGS
 - [`calcValidGini()`](calcValidGini.md) : calcValidGini
 - [`calcValidGlobalCarbonBudget()`](calcValidGlobalCarbonBudget.md) :
@@ -158,6 +160,7 @@
 - [`calcValidWaterUsage()`](calcValidWaterUsage.md) :
   calcValidWaterUsage
 - [`calcValidYield()`](calcValidYield.md) : calcValidYield
+- [`convertGCBcountry()`](convertGCBcountry.md) : convertGCBcountry
 - [`convertGMIA()`](convertGMIA.md) : convertGMIA
 - [`convertGasser()`](convertGasser.md) : convertGasser
 - [`convertHID()`](convertHID.md) : convertHID
@@ -165,6 +168,7 @@
   convertIMPACTIrrigInvCosts
 - [`convertPardeyAgRD()`](convertPardeyAgRD.md) : convertPardeyAgRD
 - [`convertWaterUsage()`](convertWaterUsage.md) : convertWaterUsage
+- [`correctGCBcountry()`](correctGCBcountry.md) : correctGCBcountry
 - [`correctGMIA()`](correctGMIA.md) : correctGMIA
 - [`correctHID()`](correctHID.md) : correctHID
 - [`correctSoilCarbonDebt()`](correctSoilCarbonDebt.md) :
@@ -172,6 +176,7 @@
 - [`downloadAR6SPMFig1()`](downloadAR6SPMFig1.md) : downloadAR6SPMFig1
 - [`downloadBII()`](downloadBII.md) : downloadBII
 - [`downloadCMIP6()`](downloadCMIP6.md) : downloadCMIP6
+- [`downloadGCBcountry()`](downloadGCBcountry.md) : downloadGCBcountry
 - [`downloadGlobalCarbonBudget()`](downloadGlobalCarbonBudget.md) :
   downloadGlobalCarbonBudget
 - [`downloadSoilCarbonDebt()`](downloadSoilCarbonDebt.md) :
@@ -189,6 +194,7 @@
   readChenFoodPrices2025
 - [`readEmisLucGlo()`](readEmisLucGlo.md) : EmisLucGlo
 - [`readFAOrotation()`](readFAOrotation.md) : FAOrotation
+- [`readGCBcountry()`](readGCBcountry.md) : readGCBcountry
 - [`readGMIA()`](readGMIA.md) : readGMIA
 - [`readGSOC()`](readGSOC.md) : readGSOC
 - [`readGasser()`](readGasser.md) : Gasser
