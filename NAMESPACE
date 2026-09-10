@@ -12,112 +12,136 @@ import(mrfaocore)
 import(mrlandcore)
 import(mrmagpie)
 importFrom(GDPuc,toolConvertGDP)
-importFrom(dplyr,"%>%")
-importFrom(dplyr,across)
-importFrom(dplyr,arrange)
-importFrom(dplyr,bind_rows)
-importFrom(dplyr,distinct)
-importFrom(dplyr,filter)
-importFrom(dplyr,group_by)
-importFrom(dplyr,mutate)
-importFrom(dplyr,n)
-importFrom(dplyr,pull)
-importFrom(dplyr,rename)
-importFrom(dplyr,sample_n)
-importFrom(dplyr,select)
-importFrom(dplyr,semi_join)
-importFrom(dplyr,summarise)
-importFrom(madrat,calcOutput)
-importFrom(madrat,getISOlist)
-importFrom(madrat,readSource)
-importFrom(madrat,toolAggregate)
-importFrom(madrat,toolConditionalReplace)
-importFrom(madrat,toolCountry2isocode)
-importFrom(madrat,toolCountryFill)
-importFrom(madrat,toolGetMapping)
-importFrom(madrat,toolNAreplace)
-importFrom(madrat,toolSplitSubtype)
-importFrom(madrat,toolSubtypeSelect)
-importFrom(magclass,"getCells<-")
-importFrom(magclass,"getComment<-")
-importFrom(magclass,"getItems<-")
-importFrom(magclass,"getNames<-")
-importFrom(magclass,"getRegions<-")
-importFrom(magclass,"getYears<-")
-importFrom(magclass,add_columns)
-importFrom(magclass,add_dimension)
-importFrom(magclass,as.data.frame)
-importFrom(magclass,as.magpie)
-importFrom(magclass,clean_magpie)
-importFrom(magclass,collapseDim)
-importFrom(magclass,collapseNames)
-importFrom(magclass,dimOrder)
-importFrom(magclass,dimSums)
-importFrom(magclass,fulldim)
-importFrom(magclass,getCells)
-importFrom(magclass,getItems)
-importFrom(magclass,getNames)
-importFrom(magclass,getRegions)
-importFrom(magclass,getSets)
-importFrom(magclass,getYears)
-importFrom(magclass,magpiesort)
-importFrom(magclass,magpply)
-importFrom(magclass,mbind)
-importFrom(magclass,new.magpie)
-importFrom(magclass,nregions)
-importFrom(magclass,read.magpie)
-importFrom(magclass,setNames)
-importFrom(magclass,setYears)
-importFrom(magclass,time_interpolate)
-importFrom(magclass,where)
-importFrom(magclass,wrap)
-importFrom(magclass,write.report)
-importFrom(magpiesets,FRAnames)
-importFrom(magpiesets,findset)
-importFrom(magpiesets,reporthelper)
-importFrom(magpiesets,reportingnames)
-importFrom(magpiesets,summationhelper)
+importFrom(dplyr,
+  "%>%",
+  across,
+  arrange,
+  bind_rows,
+  distinct,
+  filter,
+  group_by,
+  mutate,
+  n,
+  pull,
+  rename,
+  sample_n,
+  select,
+  semi_join,
+  summarise
+)
+importFrom(madrat,
+  calcOutput,
+  getISOlist,
+  readSource,
+  toolAggregate,
+  toolConditionalReplace,
+  toolCountry2isocode,
+  toolCountryFill,
+  toolGetMapping,
+  toolNAreplace,
+  toolSplitSubtype,
+  toolSubtypeSelect
+)
+importFrom(magclass,
+  "getCells<-",
+  "getComment<-",
+  "getItems<-",
+  "getNames<-",
+  "getRegions<-",
+  "getYears<-",
+  add_columns,
+  add_dimension,
+  as.data.frame,
+  as.magpie,
+  clean_magpie,
+  collapseDim,
+  collapseNames,
+  dimOrder,
+  dimSums,
+  fulldim,
+  getCells,
+  getItems,
+  getNames,
+  getRegions,
+  getSets,
+  getYears,
+  magpiesort,
+  magpply,
+  mbind,
+  new.magpie,
+  nregions,
+  read.magpie,
+  setNames,
+  setYears,
+  time_interpolate,
+  where,
+  wrap,
+  write.report
+)
+importFrom(magpiesets,
+  FRAnames,
+  findset,
+  reporthelper,
+  reportingnames,
+  summationhelper
+)
 importFrom(mrfaocore,toolFAOcombine)
-importFrom(mstools,toolCoord2Isocell)
-importFrom(mstools,toolGetMappingCoord2Country)
-importFrom(mstools,toolIso2CellCountries)
-importFrom(ncdf4,nc_open)
-importFrom(ncdf4,ncvar_get)
+importFrom(mstools,
+  toolCoord2Isocell,
+  toolGetMappingCoord2Country,
+  toolIso2CellCountries
+)
+importFrom(ncdf4,
+  nc_open,
+  ncvar_get
+)
 importFrom(openxlsx,read.xlsx)
-importFrom(purrr,map)
-importFrom(purrr,walk2)
-importFrom(raster,"crs<-")
-importFrom(raster,"extent<-")
-importFrom(raster,aggregate)
-importFrom(raster,area)
-importFrom(raster,as.matrix)
-importFrom(raster,brick)
-importFrom(raster,extract)
-importFrom(raster,projectRaster)
-importFrom(raster,raster)
-importFrom(raster,rasterFromXYZ)
-importFrom(raster,res)
-importFrom(raster,writeRaster)
+importFrom(purrr,
+  map,
+  walk2
+)
+importFrom(raster,
+  "crs<-",
+  "extent<-",
+  aggregate,
+  area,
+  as.matrix,
+  brick,
+  extract,
+  projectRaster,
+  raster,
+  rasterFromXYZ,
+  res,
+  writeRaster
+)
 importFrom(readxl,read_excel)
 importFrom(reshape2,melt)
 importFrom(rlang,.data)
-importFrom(stringr,str_extract)
-importFrom(stringr,str_match)
-importFrom(stringr,str_split)
-importFrom(terra,aggregate)
-importFrom(terra,extract)
-importFrom(terra,project)
-importFrom(terra,rast)
-importFrom(tidyr,drop_na)
-importFrom(tidyr,expand_grid)
-importFrom(tidyr,nest)
-importFrom(tidyr,pivot_longer)
-importFrom(tidyr,unnest)
+importFrom(stringr,
+  str_extract,
+  str_match,
+  str_split
+)
+importFrom(terra,
+  aggregate,
+  extract,
+  project,
+  rast
+)
+importFrom(tidyr,
+  drop_na,
+  expand_grid,
+  nest,
+  pivot_longer,
+  unnest
+)
 importFrom(tools,file_path_sans_ext)
-importFrom(utils,download.file)
-importFrom(utils,person)
-importFrom(utils,read.csv)
-importFrom(utils,read.table)
-importFrom(utils,tail)
-importFrom(utils,unzip)
+importFrom(utils,
+  download.file,
+  person,
+  read.csv,
+  read.table,
+  tail,
+  unzip
+)
 importFrom(withr,with_options)

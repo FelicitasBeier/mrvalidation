@@ -26,20 +26,21 @@ bookkeeping cloud. They differ mainly on PEAT; a second, conceptual axis (INDIRE
 principle but is NOT represented in the ingested data (see Axis 2):
 \tabular{lll}{
   \strong{source}      \tab \strong{peat} \tab \strong{nature (as ingested)}            \cr
-  BLUE, OSCAR, H&C2023  \tab excl \tab bookkeeping ELUC (direct, ex-peat)               \cr
-  GCB (this fn)         \tab excl \tab = mean(BLUE, OSCAR, H&C2023)                      \cr
-  Gasser et al 2020     \tab excl \tab OSCAR bookkeeping                                 \cr
+  BLUE, OSCAR, H&C2023  \tab incl \tab net has GCB's peat folded in (see PEAT below)      \cr
+  GCB (this fn)         \tab incl \tab published GCB net (own net column, peat folded in)\cr
+  Gasser et al 2020     \tab excl \tab OSCAR bookkeeping (separate fn)                   \cr
   FAO_EmisLUC           \tab incl \tab FAOSTAT net LULUCF ("Land Use total"), a source   \cr
   EDGAR_LU              \tab incl \tab EDGAR LULUCF CO2, a source                        \cr
   PRIMAPhist            \tab incl \tab PRIMAP-hist CAT5 (LUCF) CO2, a source             \cr
 }
 
-Axis 1 - PEAT. Bookkeeping estimates exclude peat drainage/fire; the national-statistics series include
-it (drained organic soils). MAgPIE's Land-use Change INCLUDES peat (separable via its \code{+|Peatland}
-child), so the peat-clean bookkeeping comparison uses Land-use Change net of that peat child (magpie4's
-\code{...|Land-use Change|Excl Peatland} line, where present, provides this directly). The peat term
-(~1-1.5 Gt CO2/yr) is small relative to the source magnitude and does not move the inventories out of
-the LUC cloud.
+Axis 1 - PEAT. GCB folds a common peat drainage & fires term (~0.7-1.7 Gt CO2/yr) into EVERY bookkeeping
+model's net, though only GCB's block breaks it out as a column (verified: each model's net exceeds the sum
+of its ex-peat components by exactly that peat). So \code{+|Land-use Change} is already consistently
+incl-peat across all four models, matching MAgPIE's \code{+|Land-use Change} (which also includes peat).
+The function reads GCB's peat column and adds, for all four models, a matching \code{...|+|Peatland} child
+(closing the net-vs-components gap) and \code{...|Land-use Change|Excl Peatland} (net of peat, matching
+MAgPIE's peat-excluded line). Gasser and the national-statistics series are handled elsewhere.
 
 Axis 2 - INDIRECT (Grassi) - NOT represented in the ingested data. In principle the bookkeeping-vs-NGHGI
 gap (~5 Gt CO2/yr; Grassi et al. 2021, doi:10.1038/s41558-021-01033-6) arises because country inventories,
@@ -53,11 +54,10 @@ NOT to net Land. The sink-inclusive NGHGI-net quantity Grassi contrasts with boo
 this validation cloud, so MAgPIE's own \code{+|Indirect} (its Grassi managed-land sink ~-5.6 Gt CO2/yr,
 \code{i52_land_carbon_sink}) has no inventory counterpart here to validate against.
 
-GCB note - the GCB column ingested here is the bookkeeping-model MEAN and is EX-peat: GCB ==
-mean(BLUE, OSCAR, H&C2023) exactly (World 2020: 4298 == mean(5607, 4724, 2564)). The published GCB
-ELUC additionally adds peat drainage/fire (a separate GCB.xlsx column) not folded into the ingested
-net. GCB's peat column exists in the workbook but is intentionally not ingested (it could not be an
-additive child of Land-use Change, since GCB's net excludes it).
+GCB note - every workbook model's net INCLUDES the common peat drainage & fires (verified: World 2010, GCB
+5181 / BLUE 6156 / OSCAR 5775 / H&C 3612, each = its ex-peat components + ~943 peat). GCB's block is the
+only one that lists peat as a separate column. That peat column is now read and attached as a +|Peatland
+child to all four, so net = components + peat holds and the Excl Peatland variant matches MAgPIE's line.
 
 Do NOT benchmark net Land against GCB: the only Indirect / net \code{Emissions|CO2|Land} series here is
 GCB's, where Indirect = the GCB terrestrial sink S_LAND over ALL land (World 2020: -11403 Mt CO2/yr,
@@ -69,5 +69,5 @@ calcOutput("ValidGlobalCarbonBudget")
 }
 }
 \author{
-Michael Crawford
+Michael Crawford, Florian Humpenoeder
 }

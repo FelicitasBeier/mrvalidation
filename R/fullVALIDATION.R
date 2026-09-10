@@ -289,6 +289,10 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
              file = valfile, append = TRUE, try = TRUE) # ready
   calcOutput(type = "ValidEmisLucGasser", subtype = "bookkeeping", aggregate = aggregate,
              file = valfile, append = TRUE, try = TRUE) # ready
+  # regional bookkeeping band (BLUE / OSCAR / H&N, ex-peatland); regions only, the World cloud is
+  # covered by ValidGlobalCarbonBudget
+  calcOutput(type = "ValidGCBcountry", aggregate = "region",
+             file = valfile, append = TRUE, try = TRUE) # ready
   calcOutput(type = "ValidEmissionsAFOLU", datasource = "FAO", aggregate = aggregate,
              file = valfile, append = TRUE, try = TRUE) # ready
   calcOutput(type = "ValidEmissionsAFOLU", datasource = "FAO", aggregate = aggregate, cumulative = TRUE,

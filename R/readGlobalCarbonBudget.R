@@ -1,8 +1,9 @@
 #' @title readGlobalCarbonBudget
 #' @description read the Global Carbon Budget, selecting the models GCB, BLUE, H&C2023, OSCAR and their sub-components
-#' Net, Deforestation, Forest regrowth, Other transitions, Wood harvest and other forest management
+#' Net, Deforestation, Forest regrowth, Other transitions, Wood harvest and other forest management, plus GCB's
+#' peat drainage & peat fires (the only model reporting peat) as a common peat term
 #'
-#' @author Michael Crawford
+#' @author Michael Crawford, Florian Humpenoeder
 #'
 #' @return a magpie object in Mt CO2 per year
 #'
@@ -60,7 +61,7 @@ readGlobalCarbonBudget <- function() {
     }
 
     modelData <- eluc |>
-      dplyr::select(dplyr::all_of(unname(selectedCols))) |>
+      dplyr::select(dplyr::all_of(names(eluc)[unname(selectedCols)])) |>
       dplyr::slice(-1)
 
     names(modelData) <- names(componentMap)
@@ -73,6 +74,24 @@ readGlobalCarbonBudget <- function() {
 
     elucOut <- magclass::mbind(elucOut, modelOut)
   }
+
+  # -----------------------------------------------------------------------------------------------------------------
+  # GCB peat drainage & peat fires (the only workbook model reporting peat). Read it as a common peat term so
+  # calcValidGlobalCarbonBudget can build peat-consistent incl/excl-peat Land-use Change variants.
+  gcbBlock <- modelCols[1]:(modelCols[2] - 1)
+  peatCol  <- gcbBlock[grepl("peat", subLabels[gcbBlock], fixed = TRUE)]
+  if (length(peatCol) != 1) {
+    stop("readGlobalCarbonBudget: expected one GCB 'peat drainage & peat fires' column, found ",
+         length(peatCol), " - check the GCB.xlsx 'Land-Use Change Emissions' sheet layout.")
+  }
+  peatData <- eluc |>
+    dplyr::select(dplyr::all_of(names(eluc)[peatCol])) |>
+    dplyr::slice(-1)
+  names(peatData) <- "Emissions|CO2|Land|Land-use Change|+|Peatland"
+  peatData <- dplyr::bind_cols(yearData, peatData) |>
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.numeric))
+  peatOut <- magclass::as.magpie(peatData)
+  peatOut <- magclass::add_dimension(peatOut, dim = 3.1, add = "model", nm = "GCB")
 
   # -----------------------------------------------------------------------------------------------------------------
   # Indirect emissions from climate change
@@ -96,7 +115,7 @@ readGlobalCarbonBudget <- function() {
 
   # -----------------------------------------------------------------------------------------------------------------
   # Combine output
-  allOut <- magclass::mbind(gcbNetLandFlux, slandOut, elucOut)
+  allOut <- magclass::mbind(gcbNetLandFlux, slandOut, elucOut, peatOut)
 
   # select MAgPIE years
   years <- magclass::getYears(allOut, as.integer = TRUE)
