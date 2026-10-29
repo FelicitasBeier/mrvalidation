@@ -153,6 +153,8 @@
 - [`calcValidTotalLaborCosts()`](calcValidTotalLaborCosts.md) :
   calcValidTotalLaborCosts
 - [`calcValidTrade()`](calcValidTrade.md) : calcValidTrade
+- [`calcValidTreeCoverLoss()`](calcValidTreeCoverLoss.md) :
+  calcValidTreeCoverLoss
 - [`calcValidVegfruitShare()`](calcValidVegfruitShare.md) :
   calcValidVegfruitShare
 - [`calcValidWageDevelopment()`](calcValidWageDevelopment.md) :
