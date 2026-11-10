@@ -107,15 +107,7 @@ calcValidYield  <-  function(datasource = "MadratLandInGFAOLUH", faoVersion = "j
     ## looks like Vatican are the best producers of oil
 
     ## We decided to set these outliers to 0
-    # look for the Region names which are outliers
-    region   <- rownames(which(yield > 200, arr.ind = TRUE))
-    # look for the Years where reporting is flawed
-    year     <- which(yield > 200, arr.ind = TRUE)[, 2]
-    # look for the scenario.model.Variable where reporting is flawed
-    variable <- which(yield > 200, arr.ind = TRUE)[, 3]
-
-    ## Now do the operation of our magpie object
-    yield[region, year, variable]  <-  0
+    yield[yield > 200] <- 0
     vcat(verbosity = 2, paste0("Yields>200 ton/ha were converted to 0 ",
                                "when area and production values were ambiguous"))
 
@@ -188,15 +180,7 @@ calcValidYield  <-  function(datasource = "MadratLandInGFAOLUH", faoVersion = "j
     ## looks like Vatican are the best producers of oil
 
     ## We decided to set these outliers to 0
-    # look for the Region names which are outliers
-    region   <- rownames(which(yield > 200, arr.ind = TRUE))
-    # look for the Years where reporting is flawed
-    year     <- which(yield > 200, arr.ind = TRUE)[, 2]
-    # look for the scenario.model.Variable where reporting is flawed
-    variable <- which(yield > 200, arr.ind = TRUE)[, 3]
-
-    ## Now do the operation of our magpie object
-    yield[region, year, variable]  <-  0
+    yield[yield > 200] <- 0
     vcat(verbosity = 2, paste0("Yields>200 ton/ha were converted to 0 ",
                                "when area and production values were ambiguous"))
 
@@ -218,7 +202,12 @@ calcValidYield  <-  function(datasource = "MadratLandInGFAOLUH", faoVersion = "j
 
   # rename dimensions to be consistent with MAgPIE coding etiquette
   yield  <-  add_dimension(yield, dim = 3.1, add = "scenario", nm = scenario)
-  yield  <-  add_dimension(yield, dim = 3.2, add = "model", nm = datasource)
+  # model name: datasource, with FAO version appended for pre2010 and post2010 data
+  modelName <- datasource
+  if (faoVersion != "join2010") {
+    modelName <- paste0(datasource, "_", faoVersion)
+  }
+  yield  <-  add_dimension(yield, dim = 3.2, add = "model", nm = modelName)
 
   names(dimnames(yield))[3]  <-  "scenario.model.variable"
 
