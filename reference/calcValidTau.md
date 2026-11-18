@@ -12,9 +12,11 @@ calcValidTau(datasource = "FAO2012")
 
 - datasource:
 
-  Currently available: `"FAO2012"` (original data set) and `"FAOonline"`
+  Currently available: `"FAO2012"` (original data set), `"FAOonline"`
   (projection of tau values from 1995 based on recent FAO yield
-  projections.)
+  projections) and `"MadratLandInGFAOLUH"` (projection from 1995 based
+  on the calcValidYield series, i.e. FAO production over LandInG
+  croparea).
 
 ## Value
 

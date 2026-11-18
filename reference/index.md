@@ -148,7 +148,6 @@
   calcValidSSPResults
 - [`calcValidSelfsuff()`](calcValidSelfsuff.md) : calcValidSelfsuff
 - [`calcValidTau()`](calcValidTau.md) : calcValidTau
-- [`calcValidTauPastr()`](calcValidTauPastr.md) : ValidTauPastr
 - [`calcValidTimber()`](calcValidTimber.md) : calcValidTimber
 - [`calcValidTotalLaborCosts()`](calcValidTotalLaborCosts.md) :
   calcValidTotalLaborCosts

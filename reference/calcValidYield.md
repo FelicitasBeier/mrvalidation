@@ -10,7 +10,7 @@ yield as calculated from area area and production.
 
 ``` r
 calcValidYield(
-  datasource = "FAO",
+  datasource = "MadratLandInGFAOLUH",
   faoVersion = "join2010",
   future = NULL,
   physical = TRUE
@@ -21,8 +21,8 @@ calcValidYield(
 
 - datasource:
 
-  Specify which datasource needs to be used. Currently only "FAO" and
-  "calibratedLPJmL" is available.
+  Specify which datasource needs to be used. Currently only
+  "MadratLandInGFAOLUH" and "calibratedLPJmL" is available.
 
 - faoVersion:
 
