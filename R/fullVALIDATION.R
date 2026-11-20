@@ -231,6 +231,10 @@ fullVALIDATION <- function(rev = 0.1, aggregate = "region+global") {
              file = "validation.mif", append = TRUE, try = TRUE)
   calcOutput(type = "ValidAAI", datasource = "GMIA", aggregate = aggregate,
              file = "validation.mif", append = TRUE, try = TRUE)
+  calcOutput(type = "ValidAAI", datasource = "MAgPIEown", aggregate = aggregate,
+             file = "validation.mif", append = TRUE, try = TRUE)
+  calcOutput(type = "ValidAAI", datasource = "LandInG", aggregate = aggregate,
+             file = "validation.mif", append = TRUE, try = TRUE)
 
   # Nitrogen
   calcOutput(type = "ValidNitrogenBudgetCropland", datasource = "Bodirsky", aggregate = aggregate,
